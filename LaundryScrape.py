@@ -58,36 +58,44 @@ rooms = {
 }
 
 ## for each room, scrape the html describing the machines in that room,
-## find the washers and add them as dictionaries to the washers list,
-## keep going but now they are dryers
-washers = []
-dryers = []
-for roomid in rooms.keys():
+## find the washers and add them as dictionaries to the washers list
+
+def getMachines(room, machinetype):
+    if not (machinetype == "washer" or machingtype == "dryer"):
+        return "Invalid machine name"
+
+    roomid = rooms.keys()[rooms.values().index(room)]
+    machines = []
+
     url = "http://m.laundryview.com/submitFunctions.php?"
     url += "cell=null&lr=%s&monitor=true"%roomid
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read(),'html.parser')
     washer_div = soup.find(id="washer")
     machine = washer_div.next_sibling
-    while ('id' not in machine.attrs) or machine['id'] != "dryer":
-        washers.append({
-            'lr':roomid,
-            'id':machine.a['id'],
-            'name':`machine.a.text`.split('\\xa0')[0][2:],
-            'time':machine.a.p.text
-        })
-        machine = machine.next_sibling
-    machine = machine.next_sibling
-    while (machine and machine.name == 'li'):
-        dryers.append({
-            'lr':roomid,
-            'id':machine.a['id'],
-            'time':machine.a.p.text
-        })
-        machine = machine.next_sibling
-print "----------Washers----------"
-for washer in washers:
-    print washer
-print "----------Dryers----------"
-for dryer in dryers:
-    print dryer
+    if machinetype == "washer" :
+        while ('id' not in machine.attrs) or machine['id'] != "dryer":
+            machines.append({
+                'lr':roomid,
+                'id':machine.a['id'],
+                'name':`machine.a.text`.split('\\xa0')[0][2:],
+                'time':machine.a.p.text
+            })
+            machine = machine.next_sibling
+    else :
+        while (machine and machine.name == 'li'):
+            machines.append({
+                'lr':roomid,
+                'id':machine.a['id'],
+                'time':machine.a.p.text
+            })
+            machine = machine.next_sibling
+    return str(machines)
+
+if __name__ == "__main__": 
+    print "----------Washers----------"
+    for washer in washers:
+        print washer
+    print "----------Dryers----------"
+    for dryer in dryers:
+        print dryer
