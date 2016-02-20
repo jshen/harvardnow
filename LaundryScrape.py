@@ -58,19 +58,14 @@ rooms = {
     'PFORZHEIMER HOUSE - JORDAN SOUTH'    : "1362557"
 }
 
-room_mappings = {
-    'weld' : 
-}
 
 ## for each room, scrape the html describing the machines in that room,
 ## find the washers and add them as dictionaries to the washers list
 
 def getMachines(room, machinetype):
-    if not (machinetype == "washer" or machingtype == "dryer"):
-        return "Invalid machine name"
-
+    room = room.upper()
     if room not in rooms.keys(): return "Invalid room name"
-    roomid = rooms[room.upper()]
+    roomid = rooms[room]
     machines = []
 
     url = "http://m.laundryview.com/submitFunctions.php?"
@@ -105,3 +100,11 @@ def machines_to_string(machines):
         s+= machine['name']+': '+machine['time']+'\n'
     return s
 
+def room_names():
+    s='Here are the laundry rooms that we have data for: \n'
+    used = []
+    for room in rooms:
+        if rooms[room] not in used:
+            s+=room+'\n'
+            used.append(rooms[room])
+    return s

@@ -11,8 +11,23 @@ def response():
     incoming = request.values.get('Body',None)
     body = ""
 
-    if "laundry" in incoming :
-        body = LaundryScrape.machines_to_string(LaundryScrape.getMachines("WELD HALL", "washer"))
+    words = incoming.lower().split(" ")
+    for word in words:
+        print word
+        mtype = "washer"
+        if ("dryer" in words or "dryers" in words) and ("washer" not in words and "washers" not in words):
+            mtype = "dryer"
+        machines = LaundryScrape.getMachines(word,mtype)
+        print machines
+        if machines != "Invalid room name":
+            body = mtype.upper()+"S:\n"
+            body+=LaundryScrape.machines_to_string(machines)
+            resp.message(body)
+            return str(resp)
+    
+
+    if "laundry" in incoming.lower() :
+        body = LaundryScrape.room_names()
     else :
         body = incoming
 
