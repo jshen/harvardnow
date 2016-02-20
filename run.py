@@ -12,7 +12,7 @@ def response():
     body = ""
 
     if "laundry" in incoming :
-        body = `LaundryScrape.getMachines("WELD HALL", "washer")`
+        body = LaundryScrape.machines_to_string(LaundryScrape.getMachines("WELD HALL", "washer"))
     else :
         body = incoming
 

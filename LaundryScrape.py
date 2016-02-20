@@ -99,10 +99,3 @@ def machines_to_string(machines):
         s+= machine['name']+': '+machine['time']+'\n'
     return s
 
-if __name__ == "__main__": 
-    print "----------Washers----------"
-    for washer in :
-        print washer
-    print "----------Dryers----------"
-    for dryer in dryers:
-        print dryer
