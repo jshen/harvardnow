@@ -71,7 +71,7 @@ def getMachines(room, machinetype):
     url += "cell=null&lr=%s&monitor=true"%roomid
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read(),'html.parser')
-    washer_div = soup.find(id="washer")
+    washer_div = soup.find(id=machinetype)
     machine = washer_div.next_sibling
     if machinetype == "washer" :
         while ('id' not in machine.attrs) or machine['id'] != "dryer":
@@ -87,14 +87,21 @@ def getMachines(room, machinetype):
             machines.append({
                 'lr':roomid,
                 'id':machine.a['id'],
+                'name':`machine.a.text`.split('\\xa0')[0][2:],
                 'time':machine.a.p.text
             })
             machine = machine.next_sibling
-    return str(machines)
+    return machines
+
+def machines_to_string(machines):
+    s=''
+    for machine in machines:
+        s+= machine['name']+': '+machine['time']+'\n'
+    return s
 
 if __name__ == "__main__": 
     print "----------Washers----------"
-    for washer in washers:
+    for washer in :
         print washer
     print "----------Dryers----------"
     for dryer in dryers:
