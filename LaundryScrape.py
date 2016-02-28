@@ -4,6 +4,7 @@ from bs4 import BeautifulSoup
 ## dictionary of rooms (name : id)
 rooms = {
     'CANADAY HALL'                        : "1362584",
+    'CANADAY'                        : "1362584",
     'CURRIER HOUSE - DANIELS HALL'        : "1362585",
     'LOWELL HOUSE N'                      : "1362586",
     'THAYER HALL'                         : "1362588",
