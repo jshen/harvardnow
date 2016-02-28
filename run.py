@@ -11,25 +11,38 @@ def response():
     incoming = request.values.get('Body',None)
     body = ""
 
-    words = incoming.lower().split(" ")
+    words = set(incoming.lower().split(" "))
+    mtype = "washer"
+    if ("dryer" in words or "dryers" in words) and ("washer" not in words and "washers" not in words):
+        mtype = "dryer"
+
+    lost = False
+    found = False
     for word in words:
         print word
-        mtype = "washer"
-        if ("dryer" in words or "dryers" in words) and ("washer" not in words and "washers" not in words):
-            mtype = "dryer"
         machines = LaundryScrape.getMachines(word,mtype)
         print machines
-        if machines != "Invalid room name":
-            body = mtype.upper()+"S:\n"
+        if type(machines) is str:
+            message = machines.split('|')
+            messagetype = message.pop(0)
+            if messagetype == "MULTIPLE" and not found:
+                lost = True
+                body+= "There are multiple laundry rooms in "+message.pop(0)
+                body+= "\nTry one of these: \n"
+                for room in message:
+                    body+= room+"\n"
+        else:
+            if not found:
+                body = ""
+                found = True
+            body+= word.upper()+" "+mtype.upper()+"S:\n"
             body+=LaundryScrape.machines_to_string(machines)
-            resp.message(body)
-            return str(resp)
-    
-
-    if "laundry" in incoming.lower() :
-        body = LaundryScrape.room_names()
-    else :
-        body = incoming
+            
+    if not (lost or found):
+        if "laundry" in incoming.lower():
+            body = LaundryScrape.room_names()
+        else :
+            body = "Sorry, I don't know what that is."
 
     resp.message(body)
     return str(resp)
