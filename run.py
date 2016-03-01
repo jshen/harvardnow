@@ -12,6 +12,14 @@ def response():
     body = ""
 
     words = set(incoming.lower().split(" "))
+
+    if ("demo" in words):
+        body = '''Thanks for using Harvard Now!
+        You can get laundry information by sending the name of your dorm follwed by either washer or dryer
+        e.g. Weld washer'''
+        resp.message(body)
+        return str(resp)    
+
     mtype = "washer"
     if ("dryer" in words or "dryers" in words) and ("washer" not in words and "washers" not in words):
         mtype = "dryer"
