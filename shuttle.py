@@ -25,7 +25,7 @@ routes = []
 def setupStops():
     for stop in get('stops')['data']:
         stops.append({
-            "name"    : stop['name'],
+            "name"    : stop['name'].lower(),
             "stop_id" : stop['stop_id'],
             "routes"  : stop['routes']
         })
@@ -86,4 +86,4 @@ def arrivalsAtStopID(stopID):
 #############################
     
 def arrivalsAtStopName(stopName):
-    return arrivalsAtStopID(stopNameToID(stopName))
+    return arrivalsAtStopID(stopNameToID(stopName.lower()))

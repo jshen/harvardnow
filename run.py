@@ -2,6 +2,7 @@
 from flask import Flask, request, redirect
 import twilio.twiml
 import LaundryScrape
+import shuttle
 
 app = Flask(__name__)
 
@@ -12,6 +13,7 @@ def response():
     body = ""
 
     words = set(incoming.lower().split(" "))
+
 
     if ("demo" in words):
         body = '''Thanks for using Harvard Now!
@@ -49,8 +51,18 @@ def response():
     if not (lost or found):
         if "laundry" in incoming.lower():
             body = LaundryScrape.room_names()
-        else :
-            body = "Sorry, I don't know what that is."
+
+    stop_names = []
+    for stop in shuttle.stops:
+        stop_names.append(stop['name'])
+
+    stops = [s for s in words if s in stop_names]
+
+    if not stops == []:
+        for stop in stops:
+            arrivals = shuttle.arrivalsAtStopName(stop)
+            for arrival in arrivals:
+                body += "Route: " + arrival['route'] + " ETA: " + arrival['time_left']
 
     resp.message(body)
     return str(resp)
