@@ -6,6 +6,10 @@ import shuttle
 
 app = Flask(__name__)
 
+tree = {
+    'WELD' : {'service':'L', 'roomid':'136259'}
+}
+
 @app.route("/", methods=['GET', 'POST'])
 def response():
     resp = twilio.twiml.Response()
@@ -22,6 +26,8 @@ def response():
         resp.message(body)
         return str(resp)    
 
+
+
     mtype = "washer"
     if ("dryer" in words or "dryers" in words) and ("washer" not in words and "washers" not in words):
         mtype = "dryer"
@@ -30,6 +36,8 @@ def response():
     found = False
     for word in words:
         print word
+        room = word.upper()
+
         machines = LaundryScrape.getMachines(word,mtype)
         print machines
         if type(machines) is str:

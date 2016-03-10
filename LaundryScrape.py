@@ -110,9 +110,10 @@ rooms = {
     'WINTHROP - GORE'                     : "1362536",
     'GORE'                                : "1362536",
     'WINTHROP - STANDISH'                 : "1362535",
-    'STANDISH'                            : "136253"
+    'STANDISH'                            : "1362535"
 }
     
+
 def getMachines(room, machinetype):
     room = room.upper()
     if room not in rooms.keys():
