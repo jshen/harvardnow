@@ -47,6 +47,9 @@ def routeIDToName(routeID):
 def stopNameToID(stopName):
     return [r for r in stops if r['name'] == stopName][0]['stop_id']
 
+def stopIDToName(stopID):
+    return [s for s in stops if s['stop_id'] == stopID][0]['name']
+
 ## ignores time zone
 def stringToTime(s):
     fmt = '%Y-%m-%dT%H%M%S'
@@ -67,6 +70,10 @@ def time_left(arrivalstr):
     delta = stringToTime(arrivalstr) - datetime.now()
     return deltaToString(delta)
         
+#############################
+##   Top-level Functions   ##
+#############################
+
 def arrivalsAtStopID(stopID):
     data = get('arrival-estimates',params={'stops':stopID})['data']
     if len(data) < 1:
@@ -80,10 +87,25 @@ def arrivalsAtStopID(stopID):
             'time_left':time_left(arrival['arrival_at'])
         })
     return arrivals
-
-#############################
-##   Top-level Functions   ##
-#############################
-    
+        
 def arrivalsAtStopName(stopName):
     return arrivalsAtStopID(stopNameToID(stopName))
+
+def arrivalsStopToString(arrs):
+    return '\n'.join([arr['route']+': '+arr['time_left'] for arr in arrs])
+    
+def arrivalsAtRouteId(routeID):
+    data = get('arrival-estimates',params={'routes':routeID})['data']
+    if len(data) < 1:
+        return []
+    arrivals = []
+    for estarr in data:
+        arr = estarr['arrivals'][0]
+        arrivals.append({
+            'stop': stopIDToName(estarr['stop_id']),
+            'time_left': time_left(arr['arrival_at'])
+        })
+    return arrivals
+
+def arrivalsRouteToString(arrs):
+    return '\n'.join([arr['stop']+': '+arr['time_left'] for arr in arrs])

@@ -110,16 +110,10 @@ rooms = {
     'WINTHROP - GORE'                     : "1362536",
     'GORE'                                : "1362536",
     'WINTHROP - STANDISH'                 : "1362535",
-    'STANDISH'                            : "136253"
+    'STANDISH'                            : "1362535"
 }
     
-def getMachines(room, machinetype):
-    room = room.upper()
-    if room not in rooms.keys():
-        return 'Invalid room name'
-    roomid = rooms[room]
-    if roomid.split('|')[0] == 'MULTIPLE':
-        return roomid
+def getMachines(roomid, machinetype):
     machines = []
     url = 'http://m.laundryview.com/submitFunctions.php?'
     url += 'cell=null&lr=%s&monitor=true' % roomid
