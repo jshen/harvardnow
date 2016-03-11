@@ -137,7 +137,15 @@ box = [
     {'service': 'S-S', 'stopid': '4190656' , 'label': '175 North Harvard Shuttle Stop', 'tags':['175', 'NORTH', 'HARVARD', 'SHUTTLE', 'STOP']},
     {'service': 'S-S', 'stopid': '4190660' , 'label': 'Soldiers Field Park (Temporary) Shuttle Stop', 'tags':['SOLDIERS', 'FIELD', 'PARK', '(TEMPORARY)', 'SHUTTLE', 'STOP']},
     {'service': 'S-S', 'stopid': '4190662' , 'label': 'Barry\'s Corner Shuttle Stop', 'tags':["BARRY\'S", 'CORNER', "BARRY", 'SHUTTLE', 'STOP']},
-    {'service': 'S-R', 'routeid':'4007650' , 'label': 'Allston Campus Express', 'tags':['ALLSTON','SHUTTLE']}
+    {'service': 'S-R', 'routeid': '4003894' , 'label': 'Quad Express Shuttle Route', 'tags':['QUAD', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4003906' , 'label': 'River House A Shuttle Route', 'tags':['RIVER', 'HOUSE', 'A', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4003910' , 'label': 'River House B Shuttle Route', 'tags':['RIVER', 'HOUSE', 'B', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4003914' , 'label': 'Quad Yard Express Shuttle Route', 'tags':['QUAD', 'YARD', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4003934' , 'label': 'River House C Shuttle Route', 'tags':['RIVER', 'HOUSE', 'C', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4003938' , 'label': 'Extended Overnight Shuttle Route', 'tags':['EXTENDED', 'OVERNIGHT', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4007272' , 'label': 'Barry\'s Corner Shuttle Route', 'tags':["BARRY'S",'BARRY', 'CORNER', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route', 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
+    {'service': 'S-R', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route', 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']}
 ]
 
 def filter(tag,cmds=box):
