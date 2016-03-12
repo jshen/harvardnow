@@ -1,7 +1,7 @@
 import run, LaundryScrape, shuttle
 
 f = open('output.txt', 'w')
-option = 3
+option = 1
 if (option == 1):
 
 	for room, roomid in LaundryScrape.rooms.iteritems():
@@ -12,7 +12,7 @@ if (option == 1):
 		lst = room.split(" ")
 		lst.extend(["LAUNDRY", "DRYER", "DRYERS"])
 		s2 = str(lst)
-		f.write("{'service': 'L', 'roomid':'" + roomid +"', 'machinetype':'dryer', 'label': '" + room + " Dryers', 'tags': " + s1 +"},\n")
+		f.write("{'service': 'L', 'roomid':'" + roomid +"', 'machinetype':'dryer', 'label': '" + room + " Dryers', 'tags': " + s2 +"},\n")
 elif (option == 2):
 	
 	for stop in shuttle.stops:
