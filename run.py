@@ -165,8 +165,40 @@ def response():
     incoming = request.values.get('Body',None)
     body = ""
 
+    special = False
+    if incoming.upper() == "SHUTTLE" :
+        body += "Shuttle Stops: \n"
+        body += '\n'.join([stop['name'] for stop in shuttle.stops])
+        body += "\nShuttle Routes: \n"
+        body += '\n'.join([route['name'] for route in shuttle.routes])
+        special = True
+    elif incoming.upper() == "LAUNDRY":
+        body += "Laundry Rooms: \n"
+        body += '\n'.join([room for room in LaundryScrape.rooms])
+        special = True
+    elif incoming.upper() == "DEMO":
+        body = '''Thanks for using Harvard Now!
+            Laundry Inforamtion is accessed by sending the name of your laundry room
+            e.g. Lowell D
+            For a list of all laundry rooms send laundry
+
+            To access shuttle information send the name of the stop or name of the route
+            e.g. Widener Gate
+            Quad Yard Express
+            For a list of all shuttle stops and routes send shuttle
+
+            Sending part of a name gives all information associated with that name.
+            For example sending Quad will give information about the shuttle stop Quad
+            and the shuttle route Quad Yard Express. 
+            '''
+        special = True
+
+    if special:
+        resp.message(body)
+        return str(resp)
+
     words = set(incoming.upper().split(" "))
-    print words
+    
     started = False
     results = box
     for word in words:
@@ -176,6 +208,7 @@ def response():
         else:
             started = True
             results = r
+
     if len(results)>6:
         body = "Sorry, that's too many requests."
     elif not started:
