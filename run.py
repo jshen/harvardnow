@@ -21,20 +21,20 @@ box = [
     {'service': 'L', 'roomid':'1362531', 'machinetype':'dryer', 'label': 'NEW QUINCY 6TH FLOOR Dryers', 'tags': ['NEW', 'QUINCY', '6TH', 'FLOOR', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362551', 'machinetype':'washer', 'label': 'CURRIER HOUSE - GILBERT HALL Washers', 'tags': ['CURRIER', 'HOUSE', '-', 'GILBERT', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362551', 'machinetype':'dryer', 'label': 'CURRIER HOUSE - GILBERT HALL Dryers', 'tags': ['CURRIER', 'HOUSE', '-', 'GILBERT', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362513', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - COMSTOCK HALL Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'COMSTOCK', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362513', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - COMSTOCK HALL Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'COMSTOCK', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362513', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - COMSTOCK HALL Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'COMSTOCK', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362513', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - COMSTOCK HALL Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'COMSTOCK', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362541', 'machinetype':'washer', 'label': 'HURLBUT HALL Washers', 'tags': ['HURLBUT', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362541', 'machinetype':'dryer', 'label': 'HURLBUT HALL Dryers', 'tags': ['HURLBUT', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362515', 'machinetype':'washer', 'label': '22 PRESCOTT ST Washers', 'tags': ['22', 'PRESCOTT', 'ST', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362515', 'machinetype':'dryer', 'label': '22 PRESCOTT ST Dryers', 'tags': ['22', 'PRESCOTT', 'ST', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362530', 'machinetype':'washer', 'label': 'LEVERETT HOUSE MCKINLOCK Washers', 'tags': ['LEVERETT', 'HOUSE', 'MCKINLOCK', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362530', 'machinetype':'dryer', 'label': 'LEVERETT HOUSE MCKINLOCK Dryers', 'tags': ['LEVERETT', 'HOUSE', 'MCKINLOCK', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362514', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - MOORS HALL Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'MOORS', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362514', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - MOORS HALL Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'MOORS', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362549', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - HOLMES HALL Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'HOLMES', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362549', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - HOLMES HALL Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'HOLMES', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362557', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - JORDAN SOUTH Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'JORDAN', 'SOUTH', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362557', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - JORDAN SOUTH Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'JORDAN', 'SOUTH', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362514', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - MOORS HALL Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'MOORS', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362514', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - MOORS HALL Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'MOORS', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362549', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - HOLMES HALL Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'HOLMES', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362549', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - HOLMES HALL Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'HOLMES', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362557', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - JORDAN SOUTH Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'JORDAN', 'SOUTH', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362557', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - JORDAN SOUTH Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'JORDAN', 'SOUTH', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362585', 'machinetype':'washer', 'label': 'CURRIER HOUSE - DANIELS HALL Washers', 'tags': ['CURRIER', 'HOUSE', '-', 'DANIELS', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362585', 'machinetype':'dryer', 'label': 'CURRIER HOUSE - DANIELS HALL Dryers', 'tags': ['CURRIER', 'HOUSE', '-', 'DANIELS', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362546', 'machinetype':'washer', 'label': 'ADAMS HOUSE Washers', 'tags': ['ADAMS', 'HOUSE', 'LAUNDRY', 'WASHERS', 'WASHER']},
@@ -57,16 +57,16 @@ box = [
     {'service': 'L', 'roomid':'1362547', 'machinetype':'dryer', 'label': 'APLEY COURT Dryers', 'tags': ['APLEY', 'COURT', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362525', 'machinetype':'washer', 'label': 'KIRKLAND HOUSE J Washers', 'tags': ['KIRKLAND', 'HOUSE', 'J', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362525', 'machinetype':'dryer', 'label': 'KIRKLAND HOUSE J Dryers', 'tags': ['KIRKLAND', 'HOUSE', 'J', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362554', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - WOLBACH HALL Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'WOLBACH', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362554', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - WOLBACH HALL Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'WOLBACH', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362554', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - WOLBACH HALL Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'WOLBACH', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362554', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - WOLBACH HALL Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'WOLBACH', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362529', 'machinetype':'washer', 'label': 'LOWELL HOUSE D Washers', 'tags': ['LOWELL', 'HOUSE', 'D', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362529', 'machinetype':'dryer', 'label': 'LOWELL HOUSE D Dryers', 'tags': ['LOWELL', 'HOUSE', 'D', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362552', 'machinetype':'washer', 'label': 'CURRIER HOUSE - TUCHMAN HALL Washers', 'tags': ['CURRIER', 'HOUSE', '-', 'TUCHMAN', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362552', 'machinetype':'dryer', 'label': 'CURRIER HOUSE - TUCHMAN HALL Dryers', 'tags': ['CURRIER', 'HOUSE', '-', 'TUCHMAN', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362533', 'machinetype':'washer', 'label': '1306 MASS AVE Washers', 'tags': ['1306', 'MASS', 'AVE', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362533', 'machinetype':'dryer', 'label': '1306 MASS AVE Dryers', 'tags': ['1306', 'MASS', 'AVE', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362593', 'machinetype':'washer', 'label': 'STONE HALL  Washers', 'tags': ['STONE', 'HALL', '', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362593', 'machinetype':'dryer', 'label': 'STONE HALL  Dryers', 'tags': ['STONE', 'HALL', '', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362593', 'machinetype':'washer', 'label': 'STONE HALL  Washers', 'tags': ['STONE', 'HALL', 'QUINCY', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362593', 'machinetype':'dryer', 'label': 'STONE HALL  Dryers', 'tags': ['STONE', 'HALL', 'QUINCY', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'136259', 'machinetype':'washer', 'label': 'WELD HALL Washers', 'tags': ['WELD', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'136259', 'machinetype':'dryer', 'label': 'WELD HALL Dryers', 'tags': ['WELD', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'144634', 'machinetype':'washer', 'label': '20 DEWOLFE STREET Washers', 'tags': ['20', 'DEWOLFE', 'STREET', 'LAUNDRY', 'WASHERS', 'WASHER']},
@@ -77,12 +77,10 @@ box = [
     {'service': 'L', 'roomid':'1362523', 'machinetype':'dryer', 'label': 'ELIOT HOUSE J Dryers', 'tags': ['ELIOT', 'HOUSE', 'J', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362584', 'machinetype':'washer', 'label': 'CANADAY HALL Washers', 'tags': ['CANADAY', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362584', 'machinetype':'dryer', 'label': 'CANADAY HALL Dryers', 'tags': ['CANADAY', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362539', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - JORDAN NORTH Washers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'JORDAN', 'NORTH', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362539', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - JORDAN NORTH Dryers', 'tags': ['PFORZHEIMER', 'HOUSE', '-', 'JORDAN', 'NORTH', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362539', 'machinetype':'washer', 'label': 'PFORZHEIMER HOUSE - JORDAN NORTH Washers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'JORDAN', 'NORTH', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362539', 'machinetype':'dryer', 'label': 'PFORZHEIMER HOUSE - JORDAN NORTH Dryers', 'tags': ['PFORZHEIMER','PFOHO', 'HOUSE', '-', 'JORDAN', 'NORTH', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362510', 'machinetype':'washer', 'label': 'CURRIER HOUSE - BINGHAM HALL Washers', 'tags': ['CURRIER', 'HOUSE', '-', 'BINGHAM', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362510', 'machinetype':'dryer', 'label': 'CURRIER HOUSE - BINGHAM HALL Dryers', 'tags': ['CURRIER', 'HOUSE', '-', 'BINGHAM', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362518', 'machinetype':'washer', 'label': 'WIGG Washers', 'tags': ['WIGG', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362518', 'machinetype':'dryer', 'label': 'WIGG Dryers', 'tags': ['WIGG', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362535', 'machinetype':'washer', 'label': 'WINTHROP - STANDISH Washers', 'tags': ['WINTHROP', '-', 'STANDISH', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362535', 'machinetype':'dryer', 'label': 'WINTHROP - STANDISH Dryers', 'tags': ['WINTHROP', '-', 'STANDISH', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362511', 'machinetype':'washer', 'label': 'CABOT HOUSE - BERTRAM HALL Washers', 'tags': ['CABOT', 'HOUSE', '-', 'BERTRAM', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
@@ -91,8 +89,8 @@ box = [
     {'service': 'L', 'roomid':'1362545', 'machinetype':'dryer', 'label': 'KIRKLAND HOUSE G Dryers', 'tags': ['KIRKLAND', 'HOUSE', 'G', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362515', 'machinetype':'washer', 'label': '20 PRESCOTT ST Washers', 'tags': ['20', 'PRESCOTT', 'ST', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362515', 'machinetype':'dryer', 'label': '20 PRESCOTT ST Dryers', 'tags': ['20', 'PRESCOTT', 'ST', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'roomid':'1362518', 'machinetype':'washer', 'label': 'WIGGLESWORTH HALL Washers', 'tags': ['WIGGLESWORTH', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'roomid':'1362518', 'machinetype':'dryer', 'label': 'WIGGLESWORTH HALL Dryers', 'tags': ['WIGGLESWORTH', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'roomid':'1362518', 'machinetype':'washer', 'label': 'WIGGLESWORTH HALL Washers', 'tags': ['WIGGLESWORTH','WIGG', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'roomid':'1362518', 'machinetype':'dryer', 'label': 'WIGGLESWORTH HALL Dryers', 'tags': ['WIGGLESWORTH','WIGG', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362586', 'machinetype':'washer', 'label': 'LOWELL HOUSE N Washers', 'tags': ['LOWELL', 'HOUSE', 'N', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'roomid':'1362586', 'machinetype':'dryer', 'label': 'LOWELL HOUSE N Dryers', 'tags': ['LOWELL', 'HOUSE', 'N', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'roomid':'1362516', 'machinetype':'washer', 'label': 'GREENOUGH HALL Washers', 'tags': ['GREENOUGH', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
@@ -152,12 +150,19 @@ def filter(tag,cmds=box):
     return [cmd for cmd in cmds if tag in cmd['tags']]
 
 def eval(cmd):
+    s = ""
     if cmd['service'] == 'L':
-        return cmd['label']+'\n'+LaundryScrape.machines_to_string(LaundryScrape.getMachines(cmd['roomid'],cmd['machinetype']))
+        s = cmd['label']+'\n'+LaundryScrape.machines_to_string(LaundryScrape.getMachines(cmd['roomid'],cmd['machinetype']))
     elif cmd['service'] == 'S-S':
-        return cmd['label']+'\n'+shuttle.arrivalsStopToString(shuttle.arrivalsAtStopID(cmd['stopid']))
+        s = cmd['label']+'\n'+shuttle.arrivalsStopToString(shuttle.arrivalsAtStopID(cmd['stopid']))
+        if s == "":
+            s = "No active shuttles for this stop."
     elif cmd['service'] == 'S-R':
-        return cmd['label']+'\n'+shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId(cmd['routeid']))
+        s = cmd['label']+'\n'+shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId(cmd['routeid']))
+        if s == "":
+            s = "This route is currently inactive."
+    return s
+
     
 @app.route("/", methods=['GET', 'POST'])
 def response():
@@ -179,7 +184,7 @@ def response():
     elif incoming.upper() == "DEMO":
         body = '''Thanks for using Harvard Now!
 Laundry Inforamtion is accessed by sending the name of your laundry room
-e.g. Lowell D
+e.g. Lowell D    
 For a list of all laundry rooms send laundry
 
 To access shuttle information send the name of the stop or name of the route
@@ -187,7 +192,7 @@ e.g. Widener Gate    Quad Yard Express
 For a list of all shuttle stops and routes send shuttle
 
 Sending part of a name gives all information associated with that name.
-For example sending Quad will give information about the shuttle stop Quad and the shuttle route Quad Yard Express. 
+For example sending Quad will give information about the shuttle stop Quad and the shuttle route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.
             '''
         special = True
 
@@ -206,11 +211,10 @@ For example sending Quad will give information about the shuttle stop Quad and t
         else:
             started = True
             results = r
-
-    if len(results)>6:
-        body = "Sorry, that's too many requests."
-    elif not started:
+    if not started:
         body = "Sorry, I don't know what that is."
+    elif len(results) > 12:
+        body = "Sorry, that's too many requests."
     else:
         body = "\n".join(['\n'+eval(cmd) for cmd in results])
 

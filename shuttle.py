@@ -92,6 +92,8 @@ def arrivalsAtStopName(stopName):
     return arrivalsAtStopID(stopNameToID(stopName))
 
 def arrivalsStopToString(arrs):
+    if [arr['time_left'] for arr in arrs] == []:
+        return ""
     return '\n'.join([arr['route']+': '+arr['time_left'] for arr in arrs])
     
 def arrivalsAtRouteId(routeID):
@@ -108,4 +110,6 @@ def arrivalsAtRouteId(routeID):
     return arrivals
 
 def arrivalsRouteToString(arrs):
+    if [arr['time_left'] for arr in arrs] == []:
+        return ""
     return '\n'.join([arr['stop']+': '+arr['time_left'] for arr in arrs])
