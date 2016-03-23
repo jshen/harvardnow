@@ -92,8 +92,8 @@ def arrivalsAtStopName(stopName):
     return arrivalsAtStopID(stopNameToID(stopName))
 
 def arrivalsStopToString(arrs):
-    if [arr['time_left'] for arr in arrs] == []:
-        return ""
+    if arrs == []:
+        return "No shuttles running at this stop."
     return '\n'.join([arr['route']+': '+arr['time_left'] for arr in arrs])
     
 def arrivalsAtRouteId(routeID):
@@ -110,6 +110,6 @@ def arrivalsAtRouteId(routeID):
     return arrivals
 
 def arrivalsRouteToString(arrs):
-    if [arr['time_left'] for arr in arrs] == []:
-        return ""
+    if arrs == []:
+        return "This route is currently inactive."
     return '\n'.join([arr['stop']+': '+arr['time_left'] for arr in arrs])

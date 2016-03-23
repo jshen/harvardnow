@@ -155,12 +155,8 @@ def eval(cmd):
         s = cmd['label']+'\n'+LaundryScrape.machines_to_string(LaundryScrape.getMachines(cmd['roomid'],cmd['machinetype']))
     elif cmd['service'] == 'S-S':
         s = cmd['label']+'\n'+shuttle.arrivalsStopToString(shuttle.arrivalsAtStopID(cmd['stopid']))
-        if s == "":
-            s = "No active shuttles for this stop."
     elif cmd['service'] == 'S-R':
         s = cmd['label']+'\n'+shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId(cmd['routeid']))
-        if s == "":
-            s = "This route is currently inactive."
     return s
 
     

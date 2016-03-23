@@ -1,7 +1,7 @@
 import run, LaundryScrape, shuttle
 
 f = open('output.txt', 'w')
-option = 1
+option = 4
 if (option == 1):
 
 	for room, roomid in LaundryScrape.rooms.iteritems():
@@ -26,3 +26,7 @@ elif (option == 3):
 		lst = route['name'].upper().split(" ")
 		lst.extend(["SHUTTLE", "ROUTE"])
 		f.write("{'service': 'S-R', 'routeid': '" + route['route_id'] + "' , 'label': '"+ route['name'] +" Shuttle Route', 'tags':"+ str(lst) +"},\n")
+
+elif (option == 4):
+	shuttle.arrivalsStopToString(shuttle.arrivalsAtStopID('4070614'))
+	shuttle.arrivalsRouteToString(shuttle.arrivalsAtRouteId('4003894'))
