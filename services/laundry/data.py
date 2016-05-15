@@ -1,6 +1,3 @@
-import urllib2, urllib
-from bs4 import BeautifulSoup
-
 rooms = {
     '10 DEWOLFE STREET'                   : "144633",
     '1201 MASS AVE 3RD FLR LR'            : "1362515",
@@ -56,42 +53,3 @@ rooms = {
     'WINTHROP - GORE'                     : "1362536",
     'WINTHROP - STANDISH'                 : "1362535"
 }
-    
-def getMachines(roomid, machinetype):
-    machines = []
-    url = 'http://m.laundryview.com/submitFunctions.php?'
-    url += 'cell=null&lr=%s&monitor=true' % roomid
-    website = urllib2.urlopen(url)
-    soup = BeautifulSoup(website.read(), 'html.parser')
-    washer_div = soup.find(id=machinetype)
-    machine = washer_div.next_sibling
-    if machinetype == 'washer':
-        while 'id' not in machine.attrs or machine['id'] != 'dryer':
-            machines.append({'lr': roomid,
-             'id': machine.a['id'],
-             'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-             'time': machine.a.p.text})
-            machine = machine.next_sibling
-    else:
-        while machine and machine.name == 'li':
-            machines.append({'lr': roomid,
-             'id': machine.a['id'],
-             'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-             'time': machine.a.p.text})
-            machine = machine.next_sibling
-    return machines
-
-def machines_to_string(machines):
-    s = ''
-    for machine in machines:
-        s += machine['name'] + ': ' + machine['time'] + '\n'
-    return s
-
-def room_names():
-    s = 'Here are the laundry rooms that we have data for: \n'
-    used = []
-    for room in rooms:
-        if rooms[room] not in used:
-            s += room + '\n'
-            used.append(rooms[room])
-    return s

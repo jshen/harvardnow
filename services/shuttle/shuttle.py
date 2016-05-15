@@ -1,45 +1,38 @@
-import requests, threading
 from datetime import datetime, timedelta
+import api
 
-AGENCY = "52"
-KEY = 'op8wGpiS5Emsh5KZtdo1Mn5hHWNpp1hVi8FjsnUgr0kn5fejO8'
-HEADERS = {
-    'X-Mashape-Key': KEY,
-    'Accept': 'Accept: application/json'
-}
-
-##########################
-##   Helper Functions   ##
-##########################
-
-def get(endpt,agency=AGENCY,key=KEY,headers=HEADERS,params={}):
-    params['agencies'] = agency
-    page = "https://transloc-api-1-2.p.mashape.com/%s.json"%endpt
-    return requests.get(page,headers=headers,params=params).json()
+#############################
+##          Setup          ##
+#############################
 
 ## stop: {name: <name>, stop_id: <stop_id>, routes: [<route_id0>,<route_id1>,...]}
 ## route: {name: <name>, route_id: <route_id0>, stops: [<stop_id0>,<stop_id1>,...]}
-stops = [] 
-routes = []
-
+stops, routes = [], []
 def setupStops():
-    for stop in get('stops')['data']:
+    for stop in api.get('stops')['data']:
         stops.append({
             "name"    : stop['name'],
             "stop_id" : stop['stop_id'],
             "routes"  : stop['routes']
         })
+
 def setupRoutes():
-    for route in get('routes')['data'][AGENCY]:
+    for route in api.get('routes')['data'][api.AGENCY]:
         routes.append({
             "name"    : route['long_name'],
             "route_id" : route['route_id'],
             "stops"  : route['stops']
         })
+
 def setup():
     setupStops()
     setupRoutes()
+
 setup()
+
+##############################
+##    Shuttle Functions     ##
+##############################    
 
 def routeIDToName(routeID):
     return [r for r in routes if r['route_id'] == routeID][0]['name']
@@ -69,13 +62,9 @@ def deltaToString(d):
 def time_left(arrivalstr):
     delta = stringToTime(arrivalstr) - datetime.now()
     return deltaToString(delta)
-        
-#############################
-##   Top-level Functions   ##
-#############################
 
 def arrivalsAtStopID(stopID):
-    data = get('arrival-estimates',params={'stops':stopID})['data']
+    data = api.get('arrival-estimates',params={'stops':stopID})['data']
     if len(data) < 1:
         return []
     else:
@@ -97,7 +86,7 @@ def arrivalsStopToString(arrs):
     return '\n'.join([arr['route']+': '+arr['time_left'] for arr in arrs])
     
 def arrivalsAtRouteId(routeID):
-    data = get('arrival-estimates',params={'routes':routeID})['data']
+    data = api.get('arrival-estimates',params={'routes':routeID})['data']
     if len(data) < 1:
         return []
     arrivals = []
@@ -113,3 +102,25 @@ def arrivalsRouteToString(arrs):
     if arrs == []:
         return "This route is currently inactive."
     return '\n'.join([arr['stop']+': '+arr['time_left'] for arr in arrs])
+    
+def makeSpecial():
+    s = "Shuttle Stops: \n"
+    s+= '\n'.join([stop['name'] for stop in stops])
+    s += "\nShuttle Routes: \n"
+    s += '\n'.join([route['name'] for route in routes])
+    return s
+
+#############################
+##        Top-Level        ##
+#############################
+
+## list of valid shuttles
+special = makeSpecial()
+
+def eval(cmd):
+    if cmd['endpoint'] == 'stop':
+        ## arriving routes at this stop
+        return cmd['label']+'\n'+arrivalsStopToString(arrivalsAtStopID(cmd['stopid']))
+    elif cmd['endpoint'] == 'route':
+        ## the route's stops 
+        return cmd['label']+'\n'+arrivalsRouteToString(arrivalsAtRouteId(cmd['routeid']))
