@@ -3,7 +3,7 @@
 HarvardNow is an integrated texting service promoting information accessibility at Harvard. Get real time information about services and facilities, including shuttle schedules, laundry timers, and more (coming soon!). Text "demo" to (617) 658-4667 to try it out!
 
 ## How it Works [From the Very Beginning] ##
-HarvardNow is a Python Flask App that runs on an HCS server. We use ngrok to create a url that we pass to a Twilio account. When the user texts the number, Twilio passes the text to our backend, where it gets process by `app.py`. 
+HarvardNow is a Python Flask App that runs on an HCS server. We use ngrok to create a url that we pass to a Twilio account. When the user texts the number, Twilio passes the text to our backend, where it gets process by `app.py`.
 
 _Python (2)_ - the programming language we're using. A python file ends in `.py` and can be run in the terminal with `python filename.py`. In this case, the server is running `python app.py`.
 
@@ -63,6 +63,14 @@ Laundry's special function lists all the shuttle stops and routes that the app k
 #### eval ####
 A shuttle command comes in one of two types: `stop` and `route` since the user can ask about either of these. Each of these evaluations basically do the same thing: make an API call with the given arguments and returns them as a string. The code behind making an API call, located in and imported from `api.py`, simply gives the necessary information to the API and returns the restult in JSON format. API stands for Application Program Interface; it is a standard of communication between data sources (in this case, the location of the shuttle data) and the application that wants that data (in this case, our app). Python's `requests` library contains the functions necessary for making an API call. These are converted to JavaScript Object Notation (JSON) format, a standard for representing information as lists and objects (dictionaries).
 
+### Weather ###
+
+#### special ####
+Weather's special function simply gives the format that a user should input to receive weather information for a city.
+
+#### eval ####
+The weather service works by doing a Google search on the indicated city. It then scrapes the data from the corresponding HTML.
+
 ## Adding Services ##
 
 ### What You Need ###
@@ -77,14 +85,14 @@ A shuttle command comes in one of two types: `stop` and `route` since the user c
     * requests
     * datetime
     * api
-  
+
 ### What to Do ###
 
 * Make a new folder under `services` (we'll refer to it as `myservice` here)
 * In the `myservice` folder add a file called `__init__.py`. It doesn't need to contain anything in it
 * Also a add a python file in `myservice` with the same name as the folder (`myservice.py`)
     * It should contain a variable `special` that stores a string. If a new user wants to use your service but isn't sure what to text, what message would you want to show them as an overview or demo?
-	* It should also contain a function `eval(cmd)` that takes a command as an argument and returns a string representing the result of evaluating that command. 
+	* It should also contain a function `eval(cmd)` that takes a command as an argument and returns a string representing the result of evaluating that command.
 	* Feel free to add any additional functions to help satisfy these requirements
 * In the `__init__.py` file directly in the `services` folder, add a line to import your main file from your folder: `from myservice import myservice`. This will make your service accessible from `app.py`
 * Add your service to the `eval` function in `app.py`. This function just uses a if-elif-else branch (conditional statement) to delegate a command to its proper service. Just above the `else` statement, add something like the following (we use `'M'` to be the shorthand string representation of your service. It's also `'L'` for laundry and `'S'` for shuttle):
@@ -101,6 +109,6 @@ elif incoming.upper() == "MYSERVICE":
     body = myservice.special
 ```
 
-* Add your commands to `box` (the master list of commands) in data.py. Be sure to give each a `service`, any arguments your service needs to know as a dictionary (`args`), and a list of `tags` that uniquely identify the command: 
+* Add your commands to `box` (the master list of commands) in data.py. Be sure to give each a `service`, any arguments your service needs to know as a dictionary (`args`), and a list of `tags` that uniquely identify the command:
 
 `{'service': 'M', 'args':{'info0':'data0', 'info1':'data1'}, 'tags': ['tag0','tag1','tag3']}`
