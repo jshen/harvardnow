@@ -65,7 +65,7 @@ def response():
     for word in words:
         r = filter(word,results)
         if r == []:
-            break
+            continue
         else:
             started = True
             results = r
