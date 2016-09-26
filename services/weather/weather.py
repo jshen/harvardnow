@@ -38,7 +38,7 @@ def makeSpecial():
     s = 'To get the weather for a particular city, use the format \'weather city\'.'
     return s
 
-## return list of valid laundry rooms
+## return proper format to use for getting weather
 special = makeSpecial()
 
 def eval(input):
