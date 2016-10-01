@@ -106,18 +106,15 @@ print ("all arrivals")
 
 arrivalTime = datetime.max
 
-for departure in routeArrivals:
-	print (departure)
-	if departure["time"] < departureTime and departure["stop"] == beginningStop["name"]:
-		valid = 0
-		for arrival in routeArrivals:
-			if arrival["stop"] == endStop["name"] and arrival["time"] > departure["time"] and departure["vehicle_id"] == arrival["vehicle_id"]:
-				valid = 1
-				if arrival["time"] < arrivalTime:
+for arrival in routeArrivals:
+	print (arrival)
+	if arrival["time"] < arrivalTime and arrival["stop"] == endStop["name"]:
+		for departure in routeArrivals:
+			if departure["stop"] == beginningStop["name"] and departure["time"] < arrival["time"] and departure["vehicle_id"] == arrival["vehicle_id"]:
+				if departure["time"] < departureTime:
+					departureTime = departure["time"]
 					arrivalTime = arrival["time"]
-		if valid == 1: 
-			departureTime = departure["time"]
-			vehicle_id = departure["vehicle_id"]
+					vehicle_id = departure["vehicle_id"]
 
 print("\n\nbest departure")
 print("Vehicle ID: " + vehicle_id)
