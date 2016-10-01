@@ -1,0 +1,13 @@
+
+{'stopid': '4109006' , 'label': 'Law School Shuttle Stop'}, 'tags':['LAW', 'SCHOOL', 'SHUTTLE', 'STOP']},
+{'stopid': '4166978' , 'label': 'Peabody Terrace Shuttle Stop'}, 'tags':['PEABODY', 'TERRACE', 'SHUTTLE', 'STOP']},
+{'stopid': '4190630' , 'label': 'Kennedy (Temporary Stop) Shuttle Stop'}, 'tags':['KENNEDY', '(TEMPORARY', 'STOP)', 'SHUTTLE', 'STOP']},
+{'stopid': '4190642' , 'label': 'Kennedy School Shuttle Stop'}, 'tags':['KENNEDY', 'SCHOOL', 'SHUTTLE', 'STOP']},
+{'stopid': '4190644' , 'label': 'i-Lab (Temporary) Shuttle Stop'}, 'tags':['I-LAB', '(TEMPORARY)', 'SHUTTLE', 'STOP']},
+{'stopid': '4190646' , 'label': 'Jordan Field Shuttle Stop'}, 'tags':['JORDAN', 'FIELD', 'SHUTTLE', 'STOP']},
+{'stopid': '4190648' , 'label': 'Stadium Complex (Gate #8) Shuttle Stop'}, 'tags':['STADIUM', 'COMPLEX', '(GATE', '#8)', 'SHUTTLE', 'STOP']},
+{'stopid': '4190650' , 'label': 'DeWolfe St. at Mill St. Area Shuttle Stop'}, 'tags':['DEWOLFE', 'ST.', 'AT', 'MILL', 'ST.', 'AREA', 'SHUTTLE', 'STOP']},
+{'stopid': '4190654' , 'label': 'Garden St. at Mason St. Shuttle Stop'}, 'tags':['GARDEN', 'ST.', 'AT', 'MASON', 'ST.', 'SHUTTLE', 'STOP']},
+{'stopid': '4190656' , 'label': '175 North Harvard Shuttle Stop'}, 'tags':['175', 'NORTH', 'HARVARD', 'SHUTTLE', 'STOP']},
+{'stopid': '4190660' , 'label': 'Soldiers Field Park (Temporary) Shuttle Stop'}, 'tags':['SOLDIERS', 'FIELD', 'PARK', '(TEMPORARY)', 'SHUTTLE', 'STOP']},
+{'stopid': '4190662' , 'label': 'Barry\'s Corner Shuttle Stop'}, 'tags':["BARRY\'S", 'CORNER', "BARRY", 'SHUTTLE', 'STOP']},
