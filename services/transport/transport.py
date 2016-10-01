@@ -72,8 +72,8 @@ def nameToID(name):
 
 
 init()
-beginning = "widener"
-end = "cabot"
+beginning = "mass"
+end = "quad"
 
 beginningStop = (item for item in stops if item["stop_id"] == nameToID(beginning)).next()
 endStop = (item for item in stops if item["stop_id"] == nameToID(end)).next()
@@ -102,24 +102,24 @@ for route in validRoutes:
 vehicle_id = 0;
 departureTime = datetime.max
 
-print ("all arrivals")
-
 arrivalTime = datetime.max
 
+bestRoute = routeArrivals[0]
+
 for arrival in routeArrivals:
-	print (arrival)
 	if arrival["time"] < arrivalTime and arrival["stop"] == endStop["name"]:
 		for departure in routeArrivals:
 			if departure["stop"] == beginningStop["name"] and departure["time"] < arrival["time"] and departure["vehicle_id"] == arrival["vehicle_id"]:
 				if departure["time"] < departureTime:
+					bestRoute = arrival;
 					departureTime = departure["time"]
 					arrivalTime = arrival["time"]
 					vehicle_id = departure["vehicle_id"]
 
-print("\n\nbest departure")
-print("Vehicle ID: " + vehicle_id)
-print("Departure Time: " + departureTime.strftime("%-I:%M%p"))
-print("Arrival Time: " + arrivalTime.strftime("%-I:%M%p"))
+departureTimeString = departureTime.strftime("%-I:%M%p")
+arrivalTimeString = arrivalTime.strftime("%-I:%M%p")
+
+print("Take " + bestRoute["route"] + " departing " + beginningStop["name"] + " at " + departureTimeString + " arriving at " + endStop["name"] + " at " + arrivalTimeString)
 
 """
 nameToID("")
