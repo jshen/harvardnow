@@ -48,9 +48,3 @@ special = makeSpecial()
 
 def eval(input):
     return getWeatherData(input)
-
-def main(argv):
-
-    print "hello";
-
-    return eval(input)
