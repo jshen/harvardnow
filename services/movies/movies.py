@@ -29,17 +29,13 @@ def parseDay(day_info, month):
         show_info += "\n"
     return shows
 
-def getToday(day=None, month=None, year=None):
+def getToday():
     resp = "Movies playing today:\n"
     now = datetime.now()
-    if not day:
-        day = now.day
-    if not month:
-        month = now.month
-    if not year:
-        year = now.year
+    day = now.day
+    month = now.month
     month_name = months[month - 1].lower()
-    year = str(year)[-2::]
+    year = str(now.year)[-2::]
     url = "http://hcl.harvard.edu/hfa/calendar/{0}{1}.html".format(month_name, year)
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read())
@@ -49,8 +45,14 @@ def getToday(day=None, month=None, year=None):
     return resp
 
 
-def getWeek():
+def getWeek(day=None, month=None, year=None):
     now = datetime.now()
+    if not day:
+        day = now.day
+    if not month:
+        month = now.month
+    if not year:
+        year = now.year
     day = now.day
     month = now.month
     year = str(now.year)[-2::]
