@@ -2,6 +2,8 @@ import urllib2
 from datetime import datetime
 from bs4 import BeautifulSoup
 
+months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+
 def parseDay(day_info, month):
     shows = ""
     try:
@@ -26,6 +28,26 @@ def parseDay(day_info, month):
                 show_info = "  "
         show_info += "\n"
     return shows
+
+def getToday(day=None, month=None, year=None):
+    resp = "Movies playing today:\n"
+    now = datetime.now()
+    if not day:
+        day = now.day
+    if not month:
+        month = now.month
+    if not year:
+        year = now.year
+    month_name = months[month - 1].lower()
+    year = str(year)[-2::]
+    url = "http://hcl.harvard.edu/hfa/calendar/{0}{1}.html".format(month_name, year)
+    website = urllib2.urlopen(url)
+    soup = BeautifulSoup(website.read())
+    day_info = soup.find(text=str(day)).parent.parent
+    day_info = day_info.find_all("p")
+    resp += parseDay(day_info, month_name)
+    return resp
+
 
 def getWeek():
     now = datetime.now()
@@ -55,13 +77,59 @@ def getMonth(cmd):
             # ignore empty days
             shows += parseDay(day_info, month)
             
-    print shows
+    return shows
 
 def makeSpecial():
-    s = "To list the movies playing for a particular month use 'movie month'"
+    s = "List movies playing...\n"
+    s += "  Today\n"
+    s += "  Week (this week)\n"
+    s += "  From [day] [month] [year, 2007 onwards]\n"
+    s += "    (the week starting on this date, default today)\n\n"
+    s += "Or search for a movie title."
     return s
 
 special = makeSpecial()
 
+max_days = range(1, 32)
+max_years = range(2007, datetime.now().year)
 def eval(cmd):
-    return getMovies(cmd)
+    month = ""
+    # add get week from function
+    
+    week_of = False
+    month = None
+    day = None
+    year = None
+    for word in cmd:
+        if word:
+            print word
+            word = word.encode('ASCII')
+            capital = word[0].upper() + word[1:].lower()
+            try:
+                int_val = int(word)
+            except:
+                int_val = 0
+        
+            if capital == "Today":
+                return getToday()
+            if capital == "From":
+                week_of = True
+            elif capital in months:
+                month = word 
+            elif int_val in max_days:
+                day = word
+                #getMonth(capital)
+            elif int_val in max_years:
+                year = word
+
+    if week_of:
+        if not day:
+            day = datetime.now().day
+        if not year:
+            year = datetime.now().year
+        if not month:
+            month = months[datetime.now().month - 1]
+
+        return str(day) + " " + month + " " + str(year)
+    else:
+        return special

@@ -18,12 +18,14 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'MOVIES':
+        return movies.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return cmd['service'] in ['W', 'MOVIES']
 
 def special(incoming):
     body = ''
@@ -33,6 +35,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "MOVIES" or incoming.upper() == "MOVIE":
+        body = movies.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -62,6 +66,7 @@ def response():
     words = set(incoming.upper().split(" "))
     started = False
     results = data.box
+
     for word in words:
         r = filter(word,results)
         if r == []:
