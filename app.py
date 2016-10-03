@@ -35,7 +35,7 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
-    elif incoming.upper() == "MOVIES" or incoming.upper() == "MOVIE":
+    elif incoming.upper() in ["MOVIES", "MOVIE", "FILM", "FILMS"]:
         body = movies.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
@@ -63,7 +63,16 @@ def response():
         resp.message(body)
         return str(resp)
     ## if not, continue with command filtering
-    words = set(incoming.upper().split(" "))
+    upper_words = incoming.upper().split(" ")
+    words = set(upper_words)
+
+    # I added a list version of input for ordered args for my search function.
+    # it relied on multi-word arguments where order is key, and I iterate
+    # to parse my arguments, so a list will be faster in that regard.
+    # this could be useful for multi-word locations for the weather service and
+    # I don't think this will add too much time to the main function
+    ordered_words = [x for x in upper_words if x]
+
     started = False
     results = data.box
 
@@ -80,7 +89,10 @@ def response():
         body = "Sorry, that's too many requests."
     else:
         if any(needsInput(cmd) for cmd in results):
-            body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
+            if results[0]["service"] == "MOVIES":
+                body = "\n".join(['\n'+eval(cmd, ordered_words) for cmd in results])
+            else:
+                body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
         else:
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
