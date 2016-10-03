@@ -1,5 +1,3 @@
-from datetime import datetime, timedelta
-from bs4 import BeautifulSoup
 import urllib, urllib2, json
 
 
@@ -33,7 +31,7 @@ def makeSignList():
         s += "%s\n" % (sign.title())
     return s
 
-
+# generate the special response
 def makeSpecial():
     response = 'Usage: horoscope [sign]\n\nList of available signs:\n'
     sign_list = makeSignList()
