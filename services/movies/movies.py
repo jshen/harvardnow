@@ -272,6 +272,7 @@ def eval(cmd):
             except:
                 int_val = 0
         
+            # Search for mode arguments
             if capital == "Today":
                 return getToday()
             elif capital == "From":
@@ -283,17 +284,18 @@ def eval(cmd):
                 info = True 
             elif capital == "Find":
                 find = True
-            elif (capital in months or month_check in months) and not month:
+            # search for date specifiers
+            elif month_check in months and not month:
                 month = month_check
-            elif int_val in max_days and not find:
+            elif int_val in max_days:
                 day = int_val
-            elif int_val in max_years and not find:
+            elif int_val in max_years:
                 year = int_val
+            # add other terms to search, factoring out command tags
             elif capital not in ["Movies", "Movie", "Films", "Film"]:
                 searches.append(capital.lower()) 
 
     if week_of:
-        print day, month, year
         try:
             return getWeek(day=day, month=month, year=year) 
         except:
