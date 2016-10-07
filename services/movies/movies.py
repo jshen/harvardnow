@@ -287,7 +287,7 @@ def eval(cmd):
             # search for date specifiers
             elif month_check in months and not month:
                 month = month_check
-            elif int_val in max_days:
+            elif int_val in max_days and not find:
                 day = int_val
             elif int_val in max_years:
                 year = int_val
@@ -301,6 +301,7 @@ def eval(cmd):
         except:
             return "No data could be found for the specified week.\n"
     elif find:
+        # get starting point if not specified
         now = datetime.now()
         if not month:
             month = months[now.month - 1]
@@ -313,6 +314,7 @@ def eval(cmd):
         else:
             results = findInMonth(month, year, search, info=info) 
             response = ""
+            # seach return value depends on if info was also searched for
             for result in results:
                 if info:
                     response += '"' + search + '":\n'
