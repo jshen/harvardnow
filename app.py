@@ -18,12 +18,14 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'MOVIES':
+        return movies.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return cmd['service'] in ['W', 'MOVIES']
 
 def special(incoming):
     body = ''
@@ -33,6 +35,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() in ["MOVIES", "MOVIE", "FILM", "FILMS"]:
+        body = movies.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -59,9 +63,20 @@ def response():
         resp.message(body)
         return str(resp)
     ## if not, continue with command filtering
-    words = set(incoming.upper().split(" "))
+    upper_words = incoming.upper().split(" ")
+    words = set(upper_words)
+
+    # I added a list version of input for ordered args for my search function.
+    # it relied on multi-word arguments where order is key, and I iterate
+    # to parse my arguments, so a list will be faster in that regard.
+    # I don't think this will add too much time to the main function, and will
+    # have great benefits for inclusion of multi-word args for services such
+    # as weather with multi-word locations
+    ordered_words = [x for x in upper_words if x]
+
     started = False
     results = data.box
+
     for word in words:
         r = filter(word,results)
         if r == []:
@@ -75,7 +90,10 @@ def response():
         body = "Sorry, that's too many requests."
     else:
         if any(needsInput(cmd) for cmd in results):
-            body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
+            if results[0]["service"] == "MOVIES":
+                body = "\n".join(['\n'+eval(cmd, ordered_words) for cmd in results])
+            else:
+                body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
         else:
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
