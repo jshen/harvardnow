@@ -1,3 +1,4 @@
+import unidecode
 import urllib2
 from datetime import datetime
 from bs4 import BeautifulSoup
@@ -70,8 +71,11 @@ def parseDay(day_info, month, year, find=None, info=False, results=[]):
                         # basic search for full title
                         regex = r'  (.+): (.*' + find + '.*)'
                         match = re.search(regex, show_info, re.IGNORECASE) 
+                        # convert with unicdecode to preserve special characters
+                        show_title = unidecode.unidecode(match.group(2))
+                        start_time = unidecode.unidecode(match.group(1))
                         result = "{0} is playing on {1}, {2} {3} at {4}.".format(
-                            match.group(2), weekday, month, date, match.group(1))
+                            show_title, weekday, month, date, start_time)
                         if info:
                             # get soup for the info page
                             link = show.find("a")["href"]
@@ -82,14 +86,20 @@ def parseDay(day_info, month, year, find=None, info=False, results=[]):
                             # get the title header
                             title = match.group(2)[1:-1] 
                             show_regex = re.compile('.*' + title + '.*')
-                            header = info_soup.find("strong", text=show_regex).parent
-                            # get info about movie relative to title
-                            film_info = header.find_next("p")
-                            description = film_info.find_next("p").getText()
-                            film_info = film_info.getText() + "\n"
+                            try:
+                                header = info_soup.find("strong", text=show_regex).parent
+                            except:
+                                header = info_soup.find(text=show_regex)
+                                    
+                            if header:
+                                header = header.parent
+                                # get info about movie relative to title
+                                film_info = header.find_next("p")
+                                description = film_info.find_next("p").getText()
+                                film_info = film_info.getText() + "\n"
 
-                            film_info += description
-                            results.append((result, film_info))
+                                film_info += description
+                                results.append((result, film_info))
                         else:
                             results.append(result)
                     shows += show_info + "\n"
@@ -171,12 +181,18 @@ def getWeek(day=None, month=None, year=None, find=None):
     for day in this_week:
         match = re.compile('\s*' + str(day) + '\s*')
         if day >= this_week[0]:
-            day_info = soup.find(class_="caldate", text=match).parent
+            try:
+                day_info = soup.find(class_="caldate", text=match).parent
+            except:
+                day_info = soup.find(text=match).parent
             day_info = day_info.find_all("p")
             info, dump = parseDay(day_info, month, year, find=find)
             shows += info
         else:
-            day_info = soup2.find(class_="caldate", text=match).parent.parent
+            try:
+                day_info = soup2.find(class_="caldate", text=match).parent
+            except:
+                day_info = soup2.find(text=match).parent
             day_info = day_info.find_all("p")
             info, dump = parseDay(day_info, month2, year, find=find)
             shows += info
@@ -244,10 +260,12 @@ def eval(cmd):
             # get capital word for month info and service commands
             word = word.encode('ASCII')
             capital = word[0].upper() + word[1:].lower()
+            month_check = capital.replace(",", "")
 
             # convert to int for specifying days and years
             try:
-                int_val = int(word)
+                int_val = word.replace(",", "")
+                int_val = int(int_val)
             except:
                 int_val = 0
         
@@ -262,12 +280,12 @@ def eval(cmd):
                 info = True 
             elif capital == "Find":
                 find = True
-            elif capital in months:
-                month = capital
+            elif (capital in months or month_check in months) and not month:
+                month = month_check
             elif int_val in max_days and not find:
-                day = int(word)
+                day = int_val
             elif int_val in max_years and not find:
-                year = int(word)
+                year = int_val
             elif capital not in ["Movies", "Movie", "Films", "Film"]:
                 searches.append(capital.lower()) 
 
@@ -284,6 +302,7 @@ def eval(cmd):
             year = now.year
 
         search = " ".join(searches)
+        print search, info
         if not search:
             return "Specify a term to search for."
         else:

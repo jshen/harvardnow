@@ -69,8 +69,9 @@ def response():
     # I added a list version of input for ordered args for my search function.
     # it relied on multi-word arguments where order is key, and I iterate
     # to parse my arguments, so a list will be faster in that regard.
-    # this could be useful for multi-word locations for the weather service and
-    # I don't think this will add too much time to the main function
+    # I don't think this will add too much time to the main function, and will
+    # have great benefits for inclusion of multi-word args for services such
+    # as weather with multi-word locations
     ordered_words = [x for x in upper_words if x]
 
     started = False
