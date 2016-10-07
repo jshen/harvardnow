@@ -85,20 +85,23 @@ def parseDay(day_info, month, year, find=None, info=False, results=[]):
 
                             # get the title header
                             title = match.group(2)[1:-1] 
-                            show_regex = re.compile('.*' + title + '.*')
-                            try:
-                                header = info_soup.find("strong", text=show_regex).parent
-                            except:
-                                header = info_soup.find(text=show_regex)
+                            show_regex = re.compile('.*' + title + '.*', re.IGNORECASE)
+                            info_soup = info_soup.find("body")
+                            #try:
+                            #    header = info_soup.find("h2", text=show_regex).parent
+                            #except:
+                            header = info_soup.find(text=show_regex)
                                     
                             if header:
-                                header = header.parent
                                 # get info about movie relative to title
                                 film_info = header.find_next("p")
-                                description = film_info.find_next("p").getText()
-                                film_info = film_info.getText() + "\n"
+                                if film_info.find("img"):
+                                    film_info = film_info.find_next("p") 
+                                description = unidecode.unidecode(film_info.find_next("p").getText())
+                                film_info = unidecode.unidecode(film_info.getText()) + "\n"
 
                                 film_info += description
+                                film_info += "\n\nRead description at: " + full
                                 results.append((result, film_info))
                         else:
                             results.append(result)
@@ -290,6 +293,7 @@ def eval(cmd):
                 searches.append(capital.lower()) 
 
     if week_of:
+        print day, month, year
         try:
             return getWeek(day=day, month=month, year=year) 
         except:
@@ -302,7 +306,6 @@ def eval(cmd):
             year = now.year
 
         search = " ".join(searches)
-        print search, info
         if not search:
             return "Specify a term to search for."
         else:
