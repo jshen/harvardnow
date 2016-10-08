@@ -7,6 +7,8 @@ from bs4 import BeautifulSoup
 #############################
 
 def getMBTAData(cmd):
+    overall_body = []
+
     for pg in cmd['pg']:
         url = 'http://www.mbtainfo.com/'
         url += pg
@@ -18,30 +20,29 @@ def getMBTAData(cmd):
         try:
             #print(soup)
             times = soup.find("a", class_="minor").find_next_siblings()
-            del times[len(times) - 1]
+            for i, x in enumerate(reversed(times)):
+                if x.name == 'ul':
+                    times = times[:-i]
+                    break
 
-            body = []
 
-            for element in times:
-                for string in element.strings:
-                    body.append(string.replace(u'\u2014', '-'))
+            def gen_body():
+                for element in times:
+                    for string in element.strings:
+                        yield string.replace(u'\u2014', '-')
 
-            body = "\n".join(filter(lambda x: len(x) > 1, body))
+            body = gen_body()
 
-            for i in xrange(1, len(body) - 1):
-                print i
-                if not unicode(body[i])[0].isdigit():
-                    body[i - 1] = u'\n'
-                    body[i + 1]
-
-            for line in body:
-                print line
+            for b in filter(lambda x: len(x) > 1, body):
+                if not (unicode(b)[0].isdigit() or b.startswith("Arriving")):
+                    overall_body.append("")
+                overall_body.append(b)
 
         except Exception, e:
             print str(e)
             return "Could not find T data. Are you sure you gave a proper line and station name?"
 
-    return body
+    return "\n".join(overall_body[1:])
 
 ############################
 ##       Top-Level        ##
@@ -58,4 +59,4 @@ def eval(cmd):
     return getMBTAData(cmd)
 
 if __name__ == "__main__":
-    getMBTAData({"pg": ["red/RHAR"]})
+    print(getMBTAData({"pg": ["red/RHAR", "green/haecl"]}))
