@@ -6,36 +6,40 @@ from bs4 import BeautifulSoup
 ##    Weather Function     ##
 #############################
 
-def getWeatherData(input):
-    url = 'http://www.mbtainfo.com/'
-    words = input.split(' ')
-    words[1] = words[1].lower()
-    words[2] = words[1][0].upper() + words[2][:4]
-    url += '/'.join(words[1], words[2])
-    print(url)
-    hdr = {'User-Agent': 'Chrome'}
-    req = urllib2.Request(url,headers=hdr)
-    website = urllib2.urlopen(req)
-    soup = BeautifulSoup(website.read(), 'html.parser')
+def getMBTAData(cmd):
+    for pg in cmd['pg']:
+        url = 'http://www.mbtainfo.com/'
+        url += pg
+        hdr = {'User-Agent': 'Chrome'}
+        req = urllib2.Request(url,headers=hdr)
+        website = urllib2.urlopen(req)
+        soup = BeautifulSoup(website.read(), 'html.parser')
 
-    try:
-        card = soup.find(id='ires').find_all(class_='g')[0]
+        try:
+            #print(soup)
+            times = soup.find("a", class_="minor").find_next_siblings()
+            del times[len(times) - 1]
 
-        label = card.h3.text + '\n' if card.h3 is not None else ''
+            body = []
 
-        overview = card.img.attrs['title'] + '\n' if card.img is not None and card.img.has_attr('title') else ''
-        tempInFarenheit = 'Temp: ' + card.find_all(class_='wob_t')[0].text.encode('unicode-escape').replace(r'\xb0','') + '\n' if len(card.find_all(class_='wob_t')) > 0 else ''
-        humidity = card.find_all(text=re.compile('Humidity'))[0] + '\n' if len(card.find_all(text=re.compile('Humidity'))) > 0 else ''
-        wind = card.find_all(text=re.compile('Wind'))[0].parent.text if len(card.find_all(text=re.compile('Wind'))) > 0 else ''
+            for element in times:
+                for string in element.strings:
+                    body.append(string.replace(u'\u2014', '-'))
 
-        body = label
-        body += overview
-        body += tempInFarenheit
-        body += humidity
-        body += wind
-    except Exception, e:
-        print str(e)
-        return "Could not find weather data. Are you sure you gave a proper city name?"
+            body = "\n".join(filter(lambda x: len(x) > 1, body))
+
+            for i in xrange(1, len(body) - 1):
+                print i
+                if not unicode(body[i])[0].isdigit():
+                    body[i - 1] = u'\n'
+                    body[i + 1]
+
+            for line in body:
+                print line
+
+        except Exception, e:
+            print str(e)
+            return "Could not find T data. Are you sure you gave a proper line and station name?"
 
     return body
 
@@ -50,5 +54,8 @@ def makeSpecial():
 ## return proper format to use for getting weather
 special = makeSpecial()
 
-def eval(input):
-    return getWeatherData(input)
+def eval(cmd):
+    return getMBTAData(cmd)
+
+if __name__ == "__main__":
+    getMBTAData({"pg": ["red/RHAR"]})
