@@ -49,6 +49,10 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
+        body += 'For departure and arrival times between to stops using the Harvard Shuttle,\n'
+        body += 'send the command \'transport\' followed by your departure stop, \'to\', and your arrival stop.\n'
+        body += 'For example: \"Transport Lamont to Quad\"\n'
+
     return body
 
 ## main function

@@ -2,22 +2,25 @@ from datetime import datetime, timedelta
 import api
 
 stops, routes = [], []
-special = "test demo"
 
 def init():
-	for route in api.get('routes')['data'][api.AGENCY]:
-		#print(route['long_name'])
-		routes.append({
-	        "name"    : route['long_name'],
-	        "route_id" : route['route_id'],
-	        "stops"  : route['stops']
-	    })
-	for stop in api.get('stops')['data']:
-		stops.append({
-	        "name"    : stop['name'],
-	        "stop_id" : stop['stop_id'],
-	        "routes"  : stop['routes']
-	    })
+	try:
+		for route in api.get('routes')['data'][api.AGENCY]:
+			#print(route['long_name'])
+			routes.append({
+		        "name"    : route['long_name'],
+		        "route_id" : route['route_id'],
+		        "stops"  : route['stops']
+		    })
+		for stop in api.get('stops')['data']:
+			stops.append({
+		        "name"    : stop['name'],
+		        "stop_id" : stop['stop_id'],
+		        "routes"  : stop['routes']
+		    })
+		return 0;
+	except Exception, e:
+		return 1;
 
 def stringToTime(s):
     fmt = '%Y-%m-%dT%H%M%S'
@@ -58,68 +61,113 @@ def nameToID(name):
 	elif (lower.find("stadium") != -1):
 		id = (item["stop_id"] for item in stops if item["name"] == "Stadium").next()
 	elif (lower.find("hbs") != -1 or lower.find ("business") != -1 or lower.find("innovation") != -1 or lower.find("lab") != -1):
-		id = (item["stop_id"] for item in stops if item["name"] == "HiLab-HBS").next()
-	elif (lower.find("soldier") != -1 or lower.find("field") != -1 or lower.find("park") != -1):
-		id = (item["stop_id"] for item in stops if item["name"] == "Soldiers Field Park").next()
+		id = (item["stop_id"] for item in stops if item["name"] == "i-Lab (Temporary)").next()
+	elif (lower.find("soldier") != -1 or lower.find("park") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Soldiers Field Park (Temporary)").next()
+	elif (lower.find("peabody") != -1 or lower.find("terrace") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Peabody Terrace").next()
+	elif (lower.find("barry") != -1 or lower.find("corner") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Barry's Corner").next()
+	elif (lower.find("jordan") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Jordan Field").next()
+	elif (lower.find("dewolf") != -1 or lower.find("mill") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "DeWolfe St. at Mill St. Area").next()
+	elif (lower.find("mason") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Garden St. at Mason St.").next()
+	elif (lower.find("175") != -1 or lower.find("north") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "175 North Harvard").next()
+	elif (lower.find("law") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Law School").next()
+	elif (lower.find("kennedy") != -1 or lower.find("government") != -1):
+		id = (item["stop_id"] for item in stops if item["name"] == "Kennedy (Temporary Stop)").next();
 	else:
 		id = 0
 
 	return id
 
 
+def eval(input):
+	if (init() == 1):
+		return "Unable to reach server. Please try again later."
+
+	try:
+		beginning = input.split("to", 1)[0]
+		end = input.split("to", 1)[1]
+	except Exception, e:
+		return "Invalid command - usage is \"transport \'stop\' to \'stop\'\""
+
+	beginningStop = (item for item in stops if item["stop_id"] == nameToID(beginning)).next()
+	endStop = (item for item in stops if item["stop_id"] == nameToID(end)).next()
+
+	if (beginningStop == 0 or endStop == 0):
+		return "Invalid command - usage is \"transport \'stop\' to \'stop\'\""
 
 
+	try:
+		routesWithBeginning = findRoutesWithStop(nameToID(beginning))
+		routesWithEnd = findRoutesWithStop(nameToID(end))
+		validRoutes = []
+		for startRoute in routesWithBeginning:
+			for endRoute in routesWithEnd:
+				if startRoute["name"] == endRoute["name"]:
+					validRoutes.append(startRoute)
 
+		if (validRoutes == []):
+			return "No routes run between those locations at this time."
 
-init()
-beginning = "mass"
-end = "quad"
+		routeArrivals = []
+		for route in validRoutes:
+			data = api.get('arrival-estimates',params={'routes':route["route_id"]})['data']
+			for estarr in data:
+				for arr in estarr['arrivals']:
+					routeArrivals.append({
+						'route': route["name"],
+						'stop': (stop["name"] for stop in stops if stop["stop_id"] == estarr['stop_id']).next(),
+						'time': stringToTime(arr['arrival_at']),
+						'vehicle_id': arr['vehicle_id']
+					})
 
-beginningStop = (item for item in stops if item["stop_id"] == nameToID(beginning)).next()
-endStop = (item for item in stops if item["stop_id"] == nameToID(end)).next()
+		if (routeArrivals == []):
+			return "No routes run between those locations at this time."
 
-routesWithBeginning = findRoutesWithStop(nameToID(beginning))
-routesWithEnd = findRoutesWithStop(nameToID(end))
-validRoutes = []
-for startRoute in routesWithBeginning:
-	for endRoute in routesWithEnd:
-		if startRoute["name"] == endRoute["name"]:
-			validRoutes.append(startRoute)
+		vehicle_id = 0;
+		departureTime = datetime.max
+		arrivalTime = datetime.max
+		bestRoute = routeArrivals[0]
 
-routeArrivals = []
+		#necessary to catch when the shuttle decides
+		#to not stop at every location on its route
+		routeFound = 0;
 
-for route in validRoutes:
-	data = api.get('arrival-estimates',params={'routes':route["route_id"]})['data']
-	for estarr in data:
-		for arr in estarr['arrivals']:
-			routeArrivals.append({
-				'route': route["name"],
-				'stop': (stop["name"] for stop in stops if stop["stop_id"] == estarr['stop_id']).next(),
-				'time': stringToTime(arr['arrival_at']),
-				'vehicle_id': arr['vehicle_id']
-			})
+		for arrival in routeArrivals:
+			if arrival["time"] < arrivalTime and arrival["stop"] == endStop["name"]:
+				for departure in routeArrivals:
+					if departure["stop"] == beginningStop["name"] and departure["time"] < arrival["time"] and departure["vehicle_id"] == arrival["vehicle_id"]:
+						if departure["time"] < departureTime:
+							routeFound = 1; 
+							bestRoute = arrival;
+							departureTime = departure["time"]
+							arrivalTime = arrival["time"]
+							vehicle_id = departure["vehicle_id"]
 
-vehicle_id = 0;
-departureTime = datetime.max
+		if (routeFound == 0):
+			return "No routes run between those locations at this time."
 
-arrivalTime = datetime.max
+		departureTimeString = departureTime.strftime("%-I:%M%p")
+		arrivalTimeString = arrivalTime.strftime("%-I:%M%p")
 
-bestRoute = routeArrivals[0]
+		returnString = "Take " + bestRoute["route"] + " departing " + beginningStop["name"] + " at " + departureTimeString + " arriving at " + endStop["name"] + " at " + arrivalTimeString
+		return returnString
+	except Exception, e:
+		return "No routes run between those locations at this time."
 
-for arrival in routeArrivals:
-	if arrival["time"] < arrivalTime and arrival["stop"] == endStop["name"]:
-		for departure in routeArrivals:
-			if departure["stop"] == beginningStop["name"] and departure["time"] < arrival["time"] and departure["vehicle_id"] == arrival["vehicle_id"]:
-				if departure["time"] < departureTime:
-					bestRoute = arrival;
-					departureTime = departure["time"]
-					arrivalTime = arrival["time"]
-					vehicle_id = departure["vehicle_id"]
+def makeSpecial():
+	s = "usage is \"transport \'stop\' to \'stop\'\""
+	return s
 
-departureTimeString = departureTime.strftime("%-I:%M%p")
-arrivalTimeString = arrivalTime.strftime("%-I:%M%p")
+special = makeSpecial()
 
-print("Take " + bestRoute["route"] + " departing " + beginningStop["name"] + " at " + departureTimeString + " arriving at " + endStop["name"] + " at " + arrivalTimeString)
+print(eval("law to mather"))
 
 """
 nameToID("")
