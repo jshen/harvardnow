@@ -5,6 +5,7 @@ from services import *
 
 app = Flask(__name__)
 
+
 ## the sublist of commands that contain the given tag
 def filter(tag,cmds=data.box):
     return [cmd for cmd in cmds if tag in cmd['tags']]
