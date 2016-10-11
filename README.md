@@ -1,3 +1,5 @@
+This fork was written by Michael Wornow, Lev Grossman, Luke Sanjer, and Jason Ren.
+
 # HarvardNow #
 ## What it is ##
 HarvardNow is an integrated texting service promoting information accessibility at Harvard. Get real time information about services and facilities, including shuttle schedules, laundry timers, and more (coming soon!). Text "demo" to (617) 658-4667 to try it out!
