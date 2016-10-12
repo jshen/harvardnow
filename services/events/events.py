@@ -26,8 +26,8 @@ def getEvents():
         cards = soup.find_all(class_ = 'card-callout-media__text')[:-1]
         body = "Events:\n\n"
         for card in cards:
-            title = card.find(class_ = 'card--event__link')
-                .string.encode("utf-8")
+            title = card.find(class_ = 'card--event__link').string.encode(
+                "utf-8")
             time = card.find_all('p')[0].string.encode("utf-8")
             location = card.find_all('p')[1].string.encode("utf-8")
             link = card.find_all('a')[0].get('href').encode("utf-8")
