@@ -1,5 +1,4 @@
 import urllib2, urllib
-import re
 from bs4 import BeautifulSoup
 
 def getHistory(input):
