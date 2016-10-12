@@ -19,9 +19,26 @@ def getEvents(input):
     website = urllib2.urlopen(req)
     soup = BeautifulSoup(website.read(), 'html.parser')
 
-    ## get current date
-    today = datetime.date.today()
+    ## get today's or specified date
+    input_new = input.split()
+    try:
+        # date is specified
+        if (len(input_new) == 2):
+            user_date = input_new[1].split("-")
+            user_month = int(user_date[0])
+            user_day = int(user_date[1])
+        # date is not specified
+        elif (len(input_new) == 1):
+            today = datetime.date.today()
+            user_month = today.month
+            user_day = today.day
+        else:
+            return "Please use the format \'events\' or \'events mm-dd\'."
 
+    except Exception:
+        return "Please use the format \'events\' or \'events mm-dd\'."
+
+    # get information about events on that date
     try:
         cards = soup.find_all(class_ = 'card-callout-media__text')[:-1]
         body = "Events:\n\n"
@@ -39,8 +56,7 @@ def getEvents(input):
             month = time.replace(',', '').split(" ")[1]
             day = time.replace(',', '').split(" ")[2]
 
-            if(months[month] == today.month and (int(day) == today.day
-                or int(day) == today.day+1)):
+            if (months[month] == user_month and int(day) == user_day):
                 body += title + '\n'
                 body += 'Time: ' + time + '\n'
                 body += 'Location: ' + location + '\n'
@@ -50,6 +66,9 @@ def getEvents(input):
         print str(e)
         return "Failed to retrieve any events"
 
+    if (body == "Events:\n\n"):
+        return "No events listed for that date."
+
     return body
 
 ############################
@@ -58,7 +77,7 @@ def getEvents(input):
 
 def makeSpecial():
     s = """To get today\'s events at Harvard, use the format \'events\'. To get
-    events for another day this week, use the format \'events mm\\dd """
+    events for another day this week, use the format \'events mm-dd\'."""
     return s
 
 ## return proper format to use for getting events

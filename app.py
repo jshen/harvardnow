@@ -19,13 +19,13 @@ def eval(cmd, input=None):
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
     elif cmd['service'] == 'E': ## Events
-        return events.eval(cmd['args'])
+        return events.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return cmd['service'] in ['W'] or cmd['service'] in ['E']
 
 def special(incoming):
     body = ''
