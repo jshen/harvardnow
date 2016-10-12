@@ -19,7 +19,7 @@ def eval(cmd, input=None):
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
     elif cmd['service'] == 'WIKI': ## Wiki
-        return Wiki.eval(input)
+        return wiki.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
