@@ -1,4 +1,4 @@
 from laundry import laundry
 from shuttle import shuttle
 from weather import weather
-from wkik import wiki
+from wikipedia import wiki
