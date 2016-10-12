@@ -8,7 +8,9 @@ import re
 ##     Event Function      ##
 #############################
 
-months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5, 'June': 6, 'July': 7, "August": 8, 'September': 9, 'October': 10, 'November': 11, 'December': 12}
+months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5,
+    'June': 6, 'July': 7, "August": 8, 'September': 9, 'October': 10,
+    'November': 11, 'December': 12}
 
 def getEvents():
     url = 'http://www.harvard.edu/events'
@@ -21,10 +23,11 @@ def getEvents():
     today = datetime.date.today()
 
     try:
-        cards = soup.find_all(class_ = 'card-callout-media__text')
+        cards = soup.find_all(class_ = 'card-callout-media__text')[:-1]
         body = "Events:\n\n"
         for card in cards:
-            title = card.find(class_ = 'card--event__link').string.encode("utf-8")
+            title = card.find(class_ = 'card--event__link')
+                .string.encode("utf-8")
             time = card.find_all('p')[0].string.encode("utf-8")
             location = card.find_all('p')[1].string.encode("utf-8")
             link = card.find_all('a')[0].get('href').encode("utf-8")
@@ -36,11 +39,12 @@ def getEvents():
             month = time.replace(',', '').split(" ")[1]
             day = time.replace(',', '').split(" ")[2]
 
-            if(months[month] == today.month and (int(day) == today.day or int(day) == today.day+1)):
+            if(months[month] == today.month and (int(day) == today.day
+                or int(day) == today.day+1)):
                 body += title + '\n'
                 body += 'Time: ' + time + '\n'
                 body += 'Location: ' + location + '\n'
-                body += 'More Information: ' + link + '\n\n'
+                body += 'More Information: ' + link + '\n'
 
     except Exception, e:
         print str(e)
