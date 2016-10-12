@@ -25,7 +25,7 @@ def eval(cmd, input=None):
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return [cmd['service'] in ['T'], cmd['service'] in ['W']]
 
 def special(incoming):
     body = ''

@@ -18,6 +18,7 @@ def init():
 		        "stop_id" : stop['stop_id'],
 		        "routes"  : stop['routes']
 		    })
+		special = makeSpecial()
 		return 0;
 	except Exception, e:
 		return 1;
@@ -36,7 +37,7 @@ def findRoutesWithStop(stop):
 def nameToID(name):
 	id = 0
 	lower = name.lower()
-	if (lower.find("quad") != -1 or lower.find("cabot") != -1 or lower.find("phoho") != -1 or lower.find("pforzheimer") != -1 or lower.find("currier") != -1 or lower.find("soch") != -1):
+	if (lower.find("quad") != -1 or lower.find("cabot") != -1 or lower.find("pfoho") != -1 or lower.find("pforzheimer") != -1 or lower.find("currier") != -1 or lower.find("soch") != -1):
 		id = (item["stop_id"] for item in stops if item["name"] == "Quad").next()
 	elif (lower.find("mass") != -1 or lower.find("ave") != -1 or lower.find("and garden") != -1 or lower.find("& garden") != -1) :
 		id = (item["stop_id"] for item in stops if item["name"] == "Mass Ave & Garden St").next()
@@ -96,12 +97,28 @@ def eval(input):
 	except Exception, e:
 		return "Invalid command - usage is \"transport \'stop\' to \'stop\'\""
 
-	beginningStop = (item for item in stops if item["stop_id"] == nameToID(beginning)).next()
-	endStop = (item for item in stops if item["stop_id"] == nameToID(end)).next()
+	try:
+		beginningStop = (item for item in stops if item["stop_id"] == nameToID(beginning)).next()
+		endStop = (item for item in stops if item["stop_id"] == nameToID(end)).next()
+	except Exception, e:
+		t = ""
+		t += "Location not recognized - usage is \"transport \'stop\' to \'stop\'\"\n"
+		t += "Valid stops are:\n"
+		for stop in stops:
+			t += stop['name']
+			t += "\n"
+		return t
+
+	if (beginningStop == endStop):
+		return "Destination must be different than origin."
 
 	if (beginningStop == 0 or endStop == 0):
-		return "Invalid command - usage is \"transport \'stop\' to \'stop\'\""
-
+		x = ""
+		x += "Location not recognized - usage is \"transport \'stop\' to \'stop\'\"\n"
+		x += "Valid stops are:\n"
+		for stop in stops:
+			x += stop['name']
+		return x
 
 	try:
 		routesWithBeginning = findRoutesWithStop(nameToID(beginning))
@@ -162,30 +179,10 @@ def eval(input):
 		return "No routes run between those locations at this time."
 
 def makeSpecial():
-	s = "usage is \"transport \'stop\' to \'stop\'\""
+	s = "Usage is \"transport \'stop\' to \'stop\'\""
+	for stop in stops:
+		s += stop['name']
+		s += "\n"
 	return s
 
 special = makeSpecial()
-
-print(eval("law to mather"))
-
-"""
-nameToID("")
-nameToID("quad")
-nameToID("phoho")
-nameToID("ave")
-nameToID("mass ave")
-nameToID("soldier")
-nameToID("square")
-nameToID("winthrop")
-nameToID("lamont")
-nameToID("lamont gate")
-nameToID("lamont library")
-nameToID("Mass Ave & gaden st.")
-nameToID("md")
-nameToID("Maxwell dw")
-"""
-
-
-
-
