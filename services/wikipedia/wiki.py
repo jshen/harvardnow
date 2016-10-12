@@ -26,4 +26,11 @@ def getWiki(input):
         print str(e)
         print("\nCould not find wiki information.\n")
 
-getWiki(sys.argv[1])
+def makeSpecial():
+    s = 'To search for a wiki article, use the format \'wiki search_item\'.'
+    return s
+
+special = makeSpecial()
+
+def eval(input):
+    return getWiki(input)
