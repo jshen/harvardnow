@@ -33,4 +33,5 @@ def makeSpecial():
 special = makeSpecial()
 
 def eval(input):
-    return getWiki(input)
+    data = input.replace("wiki ", "")
+    return getWiki(data)
