@@ -25,7 +25,7 @@ def eval(cmd, input=None):
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return cmd['service'] in ['W', "WIKI"]
 
 def special(incoming):
     body = ''
@@ -35,7 +35,7 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
-    elif incoming.upper() == "WIKI":
+    elif incoming.upper() == ["WIKI", "WIKIPEDIA"]:
         body = wiki.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
