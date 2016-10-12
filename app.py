@@ -36,7 +36,7 @@ def special(incoming):
     elif incoming.upper() == "WEATHER":
         body = weather.special
     elif incoming.upper() == "HISTORY":
-        body = weather.special
+        body = history.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
