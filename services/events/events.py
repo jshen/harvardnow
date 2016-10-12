@@ -12,7 +12,7 @@ months = {'January': 1, 'February': 2, 'March': 3, 'April': 4, 'May': 5,
     'June': 6, 'July': 7, "August": 8, 'September': 9, 'October': 10,
     'November': 11, 'December': 12}
 
-def getEvents():
+def getEvents(input):
     url = 'http://www.harvard.edu/events'
     hdr = {'User-Agent': 'Chrome'}
     req = urllib2.Request(url,headers=hdr)
@@ -57,11 +57,12 @@ def getEvents():
 ############################
 
 def makeSpecial():
-    s = 'To get today\'s events at Harvard, use the format \'events\'.'
+    s = """To get today\'s events at Harvard, use the format \'events\'. To get
+    events for another day this week, use the format \'events mm\\dd """
     return s
 
-## return proper format to use for getting weather
+## return proper format to use for getting events
 special = makeSpecial()
 
 def eval(input):
-    return getEvents()
+    return getEvents(input)
