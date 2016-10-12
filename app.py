@@ -18,8 +18,10 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
-    elif cmd['service'] == 'H': ## Weather
+    elif cmd['service'] == 'H': ## Harambe
         return harambe.eval()
+    elif cmd['service'] == 'R': ## Reddit
+        return reddit.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
@@ -37,6 +39,8 @@ def special(incoming):
         body = weather.special
     elif incoming.upper() == "HARAMBE":
         body = harambe.special
+    elif incoming.upper() == "REDDIT":
+        body = reddit.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
