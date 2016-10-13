@@ -18,6 +18,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'C':
+        return crimson.eval()
     else:
         return "ERROR 42: service not recognized"
 
