@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 HOME_URL = "https://www.thecrimson.com/"
 
 # Temporary special string 
-special = "Enter 'crimson' to get the top 5 articles. 📖"
+special = "Enter 'crimson' to get the top 5 articles."
 
 # Get top articles
 # Returns a dictionary mapping article name to link
