@@ -56,9 +56,12 @@ def searchCrimson(search):
 def eval(cmd):
 	pass
 
-searchCrimson("HUDS")
-# d = getTopArticles()
-# print(d.values())
+# searchCrimson("HUDS")
+d = getTopArticles()
+# print(d)
+
+print "\n\n".join(map(lambda e: "{}: {}".format(e[0], e[1]), d))
+
 #for i in getTopArticles():
 #	print(i.prettify())
 
