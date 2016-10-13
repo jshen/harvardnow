@@ -1,6 +1,3 @@
-## box is a list of commands
-## a command is a dictionary containing a list of tags that uniquely identify it
-## along with all the information needed to run the command
 box = [
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'washer', 'label': 'DUNSTER HOUSE K Washers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'dryer', 'label': 'DUNSTER HOUSE K Dryers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'DRYER', 'DRYERS']},
@@ -141,5 +138,9 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007272' , 'label': 'Barry\'s Corner Shuttle Route'}, 'tags':["BARRY'S",'BARRY', 'CORNER', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
-    {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'W', 'args':{}, 'tags':['WEATHER']},
+    {'service': 'M', 'args':{'Veg'}, 'tags': ['FOOD VEG','VEG','FOOD VEGETARIAN','VEGETARIAN','FOOD']},
+    {'service': 'M', 'args':{'Vgn'}, 'tags': ['FOOD VGN','VGN','FOOD VEGAN','VEGAN','FOOD']},
+    {'service': 'M', 'args':{'Nvg'}, 'tags': ['FOOD NVG','NVG','FOOD NONVEG','NONVEG','FOOD VEGETARIAN','VEGETARIAN','FOOD']}
+    
 ]
