@@ -1,10 +1,6 @@
-## To test this method, I'm temporarily importing these modules.  
-import urllib2
-from bs4 import BeautifulSoup
-
 HOME_URL = "https://www.thecrimson.com/"
 
-# Temporary special string 
+# Description special string 
 special = "Enter 'crimson' to get the top 5 articles."
 
 # Get top articles
@@ -27,13 +23,8 @@ def getTopArticles():
 
 	return topArticles
 
-def eval(cmd):
-	# TODO: parse cmd and return top articles string
-	pass
-
-d = getTopArticles()
-
-print "\n\n".join(map(lambda e: "{}: {}".format(e[0], e[1]), d))
+def eval():
+	return "\n\n".join(map(lambda e: "{}: {}".format(e[0], e[1]), getTopArticles()))
 
 
 
