@@ -1,3 +1,6 @@
+## box is a list of commands
+## a command is a dictionary containing a list of tags that uniquely identify it
+## along with all the information needed to run the command
 box = [
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'washer', 'label': 'DUNSTER HOUSE K Washers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'dryer', 'label': 'DUNSTER HOUSE K Dryers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'DRYER', 'DRYERS']},
