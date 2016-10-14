@@ -51,7 +51,7 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
-	body += 'To learn about getting dining hall menu send \'Food\''
+        body += 'To learn about getting dining hall menu send \'Food\''
     return body
 
 ## main function
