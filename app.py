@@ -26,6 +26,7 @@ def eval(cmd, input=None):
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
     return cmd['service'] in ['W']
+    ## we are not sure if this part of the code is needed or not. Our service does require the user to provide veg/vgn/nvg along with the keyword food
     return cmd['service'] in ['M']
 
 def special(incoming):
@@ -50,8 +51,7 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
-	body += 'To learn about getting dining hall menu send \'Food\''
-    return body
+	    body += 'To learn about getting dining hall menu send \'Food\''
     return body
 
 ## main function
