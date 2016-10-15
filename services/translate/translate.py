@@ -16,7 +16,7 @@ def getTranslateData(input):
     try:
         card = soup.find(id='ires')
         something = card.find_all(attrs={'class': 'ts'})[0]
-        body = something.find_all(attrs={'class' : 'r'})[0].find_all(attrs={'class' : 'nobr'})[1].text
+        body = something.find_all(attrs={'class' : 'r'})[0].find_all(attrs={'class' : 'nobr'})[1].text.encode('utf-8')
     except Exception, e:
         print str(e)
         return "Could not find translation. Are you sure you used the correct syntax? (translate <string/word> to <language>)"
