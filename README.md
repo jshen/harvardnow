@@ -50,7 +50,7 @@ We're now ready to come back to `app.py`. The `response()` function processes th
 ### Laundry ###
 
 #### special ####
-Laundry's special function lists all the laundry rooms available to query. Data about each rooom is stored in a separate file within the `laundry` subpackage (`data.py`) and imported on Line 3 of `laundry.py`.
+Laundry's special function lists all the laundry rooms available to query. Data about each room is stored in a separate file within the `laundry` subpackage (`data.py`) and imported on Line 3 of `laundry.py`.
 
 #### eval ####
 To evaluate a laundry command, get `roomid` and `machinetype` from the command's arguments and pass them to the `getMachines` function. `getMachines` uses `urllib` and `urllib2` to open the website containing the laundry data and get the HTML, and `beautifulsoup` to parse that HTML and find its relevant parts. We then construct a list of machines, where a machine is represented as a dictionary specifying the machine's `lr` (laundry room id), `id`, `name`, and `time` (a string describing the status of the machine)
