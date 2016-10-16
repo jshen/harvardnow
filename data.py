@@ -143,4 +143,5 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'W', 'args':{}, 'tags':['WEATHER']}
     {'service': 'H', 'args':{}, 'tags':['HISTORY']}
+    {'service': 'N', 'args':{}, 'tags':['NATIONALDAY']}
 ]

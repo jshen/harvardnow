@@ -1,4 +1,3 @@
-# pointless comment
 import urllib2, urllib
 from bs4 import BeautifulSoup
 
@@ -12,7 +11,7 @@ def getHistory(input):
 	return "Today in history: " + headers[1].text
 
 def makeSpecial():
-	s = "To get what happened in history today, please enter \'history\'"
+	s = "To get what happened in history today, please text \'history\' to HarvardNow"
 	return s
 
 special = makeSpecial()
