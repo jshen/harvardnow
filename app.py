@@ -12,7 +12,9 @@ def filter(tag,cmds=data.box):
 ## evaluates a given command to a string by delegating to the proper service
 def eval(cmd, input=None):
     s = ""
-    if cmd['service'] == 'L': ## Laundry
+    if cmd['service'] == 'F': ## Foodtrucks
+        return foodtruck.eval(cmd['args'])
+    elif cmd['service'] == 'L': ## Laundry
         return laundry.eval(cmd['args'])
     elif cmd['service'] == 'S': ## Shuttle
         return shuttle.eval(cmd['args'])
@@ -27,7 +29,9 @@ def needsInput(cmd):
 
 def special(incoming):
     body = ''
-    if incoming.upper() == "SHUTTLE" :
+    if incoming.upper() == "FOODTRUCKS"
+        body = foodtruck.special
+    elif incoming.upper() == "SHUTTLE" :
         body = shuttle.special
     elif incoming.upper() == "LAUNDRY":
         body = laundry.special
