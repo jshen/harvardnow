@@ -53,33 +53,15 @@ def getSEEASEvents():
 
         final_string += "\n"
 
-    # return str(all_events)
-
     return final_string
-    # washer_div = soup.find(id=machinetype)
-    
-    # machine = washer_div.next_sibling
-    # if machinetype == 'washer':
-    #     while 'id' not in machine.attrs or machine['id'] != 'dryer':
-    #         machines.append({'lr': roomid,
-    #          'id': machine.a['id'],
-    #          'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-    #          'time': machine.a.p.text})
-    #         machine = machine.next_sibling
-    # else:
-    #     while machine and machine.name == 'li':
-    #         machines.append({'lr': roomid,
-    #          'id': machine.a['id'],
-    #          'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-    #          'time': machine.a.p.text})
-    #         machine = machine.next_sibling
-    # return machines
+
+
 ############################
 ##       Top-Level        ##
 ############################
 
 ## return list of valid laundry rooms
-# special = makeSpecial()
+special = "A list of events at the School of Engineering and Applied Sciences!\n"
 
 def eval(cmd):
-    return getSEEASEvents() #cmd['label']+'\n'+ "Woohoo" machines_to_string(getMachines(cmd['roomid'],cmd['machinetype']))
+    return getSEEASEvents()
