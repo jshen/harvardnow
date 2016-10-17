@@ -19,7 +19,7 @@ def eval(cmd, input=None):
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
     elif cmd['service'] == 'F': ## Faust
-    	  return faust.eval(input)
+    	return faust.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
@@ -36,7 +36,7 @@ def special(incoming):
     elif incoming.upper() == "WEATHER":
         body = weather.special
     elif incoming.upper() == "FAUST":
-    	  body = faust.special
+    	body = faust.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -53,9 +53,9 @@ def special(incoming):
 
 ## main function
 @app.route("/", methods=['GET', 'POST'])
-def response(a):
+def response():
     resp = twilio.twiml.Response()
-    incoming = a#request.values.get('Body',None)
+    incoming = request.values.get('Body',None)
 
     ## first check if the query is a special case
     body = special(incoming.replace(' ',''))
@@ -77,8 +77,6 @@ def response(a):
         body = "Sorry, I don't know what that is."
     elif len(results) > 12:
         body = "Sorry, that's too many requests."
-    	print words
-    	print results
     else:
         if any(needsInput(cmd) for cmd in results):
         	body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
