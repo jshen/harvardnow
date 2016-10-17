@@ -25,7 +25,7 @@ def eval(cmd, input=None):
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W'] or in ['F']
+    return cmd['service'] in ['W'] or cmd['service'] in ['F']
 
 def special(incoming):
     body = ''
@@ -53,9 +53,9 @@ def special(incoming):
 
 ## main function
 @app.route("/", methods=['GET', 'POST'])
-def response():
+def response(a):
     resp = twilio.twiml.Response()
-    incoming = request.values.get('Body',None)
+    incoming = a#request.values.get('Body',None)
 
     ## first check if the query is a special case
     body = special(incoming.replace(' ',''))
@@ -77,9 +77,11 @@ def response():
         body = "Sorry, I don't know what that is."
     elif len(results) > 12:
         body = "Sorry, that's too many requests."
+    	print words
+    	print results
     else:
         if any(needsInput(cmd) for cmd in results):
-            body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
+        	body = "\n".join(['\n'+eval(cmd, words) for cmd in results])
         else:
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
