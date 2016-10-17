@@ -18,7 +18,7 @@ def getEventsData(input):
 
         events = soup.find_all("li", {"class": "event"})
         event = events[randint(0, len(events) - 1)]
-        body = "Why don't you try out " + event.find("div", {"class": "info"}).h3.a.contents + " (" +  event.find("div", {"class": "info"}).("a")["href"]
+        body = "Why don't you try out " + event.find("div", {"class": "info"}).h3.a.contents + " (" +  event.find("a", {"itemprop": "url"})["href"]
 
     except Exception, e:
         print str(e)
