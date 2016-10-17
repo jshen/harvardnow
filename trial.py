@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect
-import twilio.twiml
+# import twilio.twiml
 import data
 from services import *
 
@@ -52,14 +52,15 @@ def special(incoming):
 ## main function
 @app.route("/", methods=['GET', 'POST'])
 def response():
-    resp = twilio.twiml.Response()
-    incoming = request.values.get('Body',None)
+    # resp = twilio.twiml.Response()
+    # incoming = request.values.get('Body',None)
+    incoming = "seasevents"
 
     ## first check if the query is a special case
     body = special(incoming.replace(' ',''))
-    if body != '':
-        resp.message(body)
-        return str(resp)
+    # if body != '':
+    #     resp.message(body)
+    #     return str(resp)
     ## if not, continue with command filtering
     words = set(incoming.upper().split(" "))
     started = False
@@ -81,8 +82,11 @@ def response():
         else:
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
-    resp.message(body)
-    return str(resp)
+    # resp.message(body)
+    # return str(resp)
+    return body
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
+
+print response()
