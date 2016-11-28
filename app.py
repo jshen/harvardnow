@@ -18,12 +18,14 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'hours': ## Hours
+        return hours.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    return cmd['service'] in ['W', 'hours']
 
 def special(incoming):
     body = ''
@@ -33,6 +35,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "HOURS":
+        body = hours.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -45,6 +49,8 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
+        body += 'To access today\'s hours for a specific library, send \"library\" and the name of your library.\n'
+        body += 'For example, sending \"library yenching\" will give you today\'s hours of operations for Harvard Yenching Library.\n'
     return body
 
 ## main function
