@@ -1,20 +1,19 @@
 import urllib2, urllib
 from bs4 import BeautifulSoup
-import data
 
 #############################
 ##    Laundry Function     ##
 #############################    
 
 def getRecent():
-    url = 'https://www.thecrimson.com/'
+    url = 'https://www.thecrimson.com'
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read(), 'html.parser')
     news_div = soup.find(id="most-read-box")
     articles = news_div.findAll('li', {'class':'article-listitem'})
     data = []
     for a in articles:
-        link = a.find('a')['href']
+        link = url + a.find('a')['href']
         title = a.find('div', {'class':'article-listitem-text'}).contents[0]
         data.append({'title':title, 'link':link})
     return data
@@ -22,7 +21,7 @@ def getRecent():
 def news_to_string(news):
     s = ''
     for a in news:
-        s += a['title'] + ': ' + a['link'] + '\n'
+        s += a['title'] + a['link'] + '\n'
     return s
 
 def makeSpecial():
@@ -38,4 +37,7 @@ def makeSpecial():
 special = makeSpecial()
 
 def eval(cmd):
-    return cmd['label']+'\n'+news_to_string(getRecent())
+    return 'News:'+'\n'+news_to_string(getRecent())
+
+print special
+print news_to_string(getRecent())
