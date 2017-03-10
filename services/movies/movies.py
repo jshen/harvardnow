@@ -16,7 +16,6 @@ def getMovieData(input):
     
     try:
         card = soup.find_all(class_ = 'fl _yxj')
-        print card
         body = ""
         for i in card:
             body += i.contents[0] + "\n"
@@ -34,10 +33,8 @@ def makeSpecial():
     s = 'To get the movies for a particular zipcode, use the format \'movies zipcode\'.'
     return s
 
-## return proper format to use for getting weather
+## return proper format to use for getting movies
 special = makeSpecial()
 
 def eval(input):
     return getMovieData(input)
-
-print getMovieData("75008")

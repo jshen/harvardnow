@@ -16,7 +16,6 @@ def getWeatherData(input):
 
     try:
         card = soup.find(id='ires').find_all(class_='g')[0]
-
         label = card.h3.text + '\n' if card.h3 is not None else ''
 
         overview = card.img.attrs['title'] + '\n' if card.img is not None and card.img.has_attr('title') else ''
