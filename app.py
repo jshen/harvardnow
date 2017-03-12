@@ -19,6 +19,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'D':
+        return dining.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
@@ -34,11 +36,15 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "DINING":
+        body = dining.speacial
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
         body += 'Laundry Information is accessed by sending the name of your laundry room\n'
         body += 'e.g. Lowell D\n'
+        body += 'Dining Schedule information is access by sending the house and time of your dining location\n'
+        body += 'e.g. Adams breakfast'
         body += 'For a list of all laundry rooms send laundry\n\n'
         body += 'To access shuttle information send the name of the stop or name of the route\n'
         body += 'e.g. Widener Gate; Quad Yard Express\n'

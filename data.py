@@ -142,4 +142,69 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'D', 'args':{'name': 'ADAMS', 'meal' : 'brainbreak', 'tag':['ADAMS', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'ADAMS', 'meal' : 'breakfast', 'tag':['ADAMS', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'ADAMS', 'meal' : 'lunch', 'tag':['ADAMS', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ADAMS', 'meal' : 'dinner', 'tag':['ADAMS', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'ADAMS', 'meal' : 'brunch', 'tag':['ADAMS', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ANNENBERG', 'meal' : 'breakfast', 'tag':['ANNENBERG', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'ANNENBERG', 'meal' : 'lunch', 'tag':['ANNENBERG', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ANNENBERG', 'meal' : 'dinner', 'tag':['ANNENBERG', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'ANNENBERG', 'meal' : 'brunch', 'tag':['ANNENBERG', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ANNENBERG', 'meal' : 'brainbreak', 'tag':['ANNENBERG', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'CABOT', 'meal' : 'breakfast', 'tag':['CABOT', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'CABOT', 'meal' : 'lunch', 'tag':['CABOT', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'CABOT', 'meal' : 'dinner', 'tag':['CABOT', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'CABOT', 'meal' : 'brunch', 'tag':['CABOT', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'CABOT', 'meal' : 'brainbreak', 'tag':['CABOT', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'CURRIER', 'meal' : 'breakfast', 'tag':['CURRIER', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'CURRIER', 'meal' : 'lunch', 'tag':['CURRIER', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'CURRIER', 'meal' : 'dinner', 'tag':['CURRIER', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'CURRIER', 'meal' : 'brunch', 'tag':['CURRIER', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'CURRIER', 'meal' : 'brainbreak', 'tag':['CURRIER', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'DUNSTER', 'meal' : 'breakfast', 'tag':['DUNSTER', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'DUNSTER', 'meal' : 'lunch', 'tag':['DUNSTER', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'DUNSTER', 'meal' : 'dinner', 'tag':['DUNSTER', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'DUNSTER', 'meal' : 'brunch', 'tag':['DUNSTER', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'DUNSTER', 'meal' : 'brainbreak', 'tag':['DUNSTER', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'ELIOT', 'meal' : 'breakfast', 'tag':['ELIOT', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'ELIOT', 'meal' : 'lunch', 'tag':['ELIOT', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ELIOT', 'meal' : 'dinner', 'tag':['ELIOT', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'ELIOT', 'meal' : 'brunch', 'tag':['ELIOT', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'ELIOT', 'meal' : 'brainbreak', 'tag':['ELIOT', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'KIRKLAND', 'meal' : 'breakfast', 'tag':['KIRKLAND', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'KIRKLAND', 'meal' : 'lunch', 'tag':['KIRKLAND', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'KIRKLAND', 'meal' : 'dinner', 'tag':['KIRKLAND', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'KIRKLAND', 'meal' : 'brunch', 'tag':['KIRKLAND', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'KIRKLAND', 'meal' : 'brainbreak', 'tag':['KIRKLAND', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'LEVERETT', 'meal' : 'breakfast', 'tag':['LEVERETT', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'LEVERETT', 'meal' : 'lunch', 'tag':['LEVERETT', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'LEVERETT', 'meal' : 'dinner', 'tag':['LEVERETT', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'LEVERETT', 'meal' : 'brunch', 'tag':['LEVERETT', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'LEVERETT', 'meal' : 'brainbreak', 'tag':['LEVERETT', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'LOWELL', 'meal' : 'breakfast', 'tag':['LOWELL', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'LOWELL', 'meal' : 'lunch', 'tag':['LOWELL', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'LOWELL', 'meal' : 'dinner', 'tag':['LOWELL', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'LOWELL', 'meal' : 'brunch', 'tag':['LOWELL', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'LOWELL', 'meal' : 'brainbreak', 'tag':['LOWELL', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'MATHER', 'meal' : 'breakfast', 'tag':['MATHER', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'MATHER', 'meal' : 'lunch', 'tag':['MATHER', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'MATHER', 'meal' : 'dinner', 'tag':['MATHER', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'MATHER', 'meal' : 'brunch', 'tag':['MATHER', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'MATHER', 'meal' : 'brainbreak', 'tag':['MATHER', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'PFORZHEIMER', 'meal' : 'breakfast', 'tag':['PFORZHEIMER', 'PHOFO' 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'PFORZHEIMER', 'meal' : 'lunch', 'tag':['PFORZHEIMER', 'PHOFO', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'PFORZHEIMER', 'meal' : 'dinner', 'tag':['PFORZHEIMER', 'PHOFO', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'PFORZHEIMER', 'meal' : 'brunch', 'tag':['PFORZHEIMER', 'PHOFO', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'PFORZHEIMER', 'meal' : 'brainbreak', 'tag':['PFORZHEIMER', 'PHOFO', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'QUINCY', 'meal' : 'breakfast', 'tag':['QUINCY', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'QUINCY', 'meal' : 'lunch', 'tag':['QUINCY', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'QUINCY', 'meal' : 'dinner', 'tag':['QUINCY', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'QUINCY', 'meal' : 'brunch', 'tag':['QUINCY', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'QUINCY', 'meal' : 'brainbreak', 'tag':['QUINCY', 'BRAINBREAK', 'BRAIN BREAK' ]}}
+    {'service': 'D', 'args':{'name': 'WINTHROP', 'meal' : 'breakfast', 'tag':['WINTHROP', 'BREAKFAST' ]}}
+    {'service': 'D', 'args':{'name': 'WINTHROP', 'meal' : 'lunch', 'tag':['WINTHROP', 'LUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'WINTHROP', 'meal' : 'dinner', 'tag':['WINTHROP', 'DINNER' ]}}
+    {'service': 'D', 'args':{'name': 'WINTHROP', 'meal' : 'brunch', 'tag':['WINTHROP', 'BRUNCH' ]}}
+    {'service': 'D', 'args':{'name': 'WINTHROP', 'meal' : 'brainbreak', 'tag':['WINTHROP', 'BRAINBREAK', 'BRAIN BREAK' ]}}
 ]
