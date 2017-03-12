@@ -35,6 +35,7 @@ def getWeatherData(input):
 
     return body
 
+
 ############################
 ##       Top-Level        ##
 ############################
@@ -48,3 +49,5 @@ special = makeSpecial()
 
 def eval(input):
     return getWeatherData(input)
+
+print(eval("WeatherTokyo"))
