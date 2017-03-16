@@ -48,8 +48,8 @@ box = [
     {'service': 'L', 'args':{ 'roomid':'1362527', 'machinetype':'dryer', 'label': 'LEVERETT HOUSE G TOWER Dryers'}, 'tags': ['LEVERETT', 'HOUSE', 'G', 'TOWER', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'args':{ 'roomid':'1362588', 'machinetype':'washer', 'label': 'THAYER HALL Washers'}, 'tags': ['THAYER', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'args':{ 'roomid':'1362588', 'machinetype':'dryer', 'label': 'THAYER HALL Dryers'}, 'tags': ['THAYER', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
-    {'service': 'L', 'args':{ 'roomid':'1362537', 'machinetype':'washer', 'label': 'CABOT HOUSE - ELLIOT HALL Washers'}, 'tags': ['CABOT', 'HOUSE', '-', 'ELLIOT', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
-    {'service': 'L', 'args':{ 'roomid':'1362537', 'machinetype':'dryer', 'label': 'CABOT HOUSE - ELLIOT HALL Dryers'}, 'tags': ['CABOT', 'HOUSE', '-', 'ELLIOT', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
+    {'service': 'L', 'args':{ 'roomid':'1362537', 'machinetype':'washer', 'label': 'CABOT HOUSE - ELIOT HALL Washers'}, 'tags': ['CABOT', 'HOUSE', '-', 'ELIOT', 'ELLIOT', 'HALL', 'LAUNDRY', 'WASHERS', 'WASHER']},
+    {'service': 'L', 'args':{ 'roomid':'1362537', 'machinetype':'dryer', 'label': 'CABOT HOUSE - ELIOT HALL Dryers'}, 'tags': ['CABOT', 'HOUSE', '-', 'ELIOT', 'ELLIOT', 'HALL', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'args':{ 'roomid':'1362547', 'machinetype':'washer', 'label': 'APLEY COURT Washers'}, 'tags': ['APLEY', 'APPLY', 'COURT', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'args':{ 'roomid':'1362547', 'machinetype':'dryer', 'label': 'APLEY COURT Dryers'}, 'tags': ['APLEY', 'APPLY', 'COURT', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'args':{ 'roomid':'1362525', 'machinetype':'washer', 'label': 'KIRKLAND HOUSE J Washers'}, 'tags': ['KIRKLAND', 'HOUSE', 'J', 'LAUNDRY', 'WASHERS', 'WASHER']},
@@ -141,5 +141,6 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007272' , 'label': 'Barry\'s Corner Shuttle Route'}, 'tags':["BARRY'S",'BARRY', 'CORNER', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
-    {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'W', 'args':{}, 'tags':['WEATHER']},
+    {'service': 'V', 'args':{}, 'tags':['SPORTS', 'VARSITY', 'GAMES', 'TEAM', 'SCORE']}
 ]
