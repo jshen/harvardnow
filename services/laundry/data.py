@@ -13,7 +13,7 @@ rooms = {
     'APLEY COURT'                         : "1362547",
     'CABOT HOUSE - BERTRAM HALL'          : "1362511",
     'CABOT HOUSE - BRIGGS HALL'           : "1362540",
-    'CABOT HOUSE - ELLIOT HALL'           : "1362537",
+    'CABOT HOUSE - ELIOT HALL'            : "1362537",
     'CABOT HOUSE - WHITMAN HALL'          : "1362512",
     'CANADAY HALL'                        : "1362584",
     'CLAVERLY HALL'                       : "1362555",
