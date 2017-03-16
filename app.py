@@ -14,6 +14,8 @@ def eval(cmd, input=None):
     s = ""
     if cmd['service'] == 'L': ## Laundry
         return laundry.eval(cmd['args'])
+    elif cmd['service'] == 'M': ##Music
+        return myservice.eval(cmd['args'])
     elif cmd['service'] == 'S': ## Shuttle
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
