@@ -85,3 +85,6 @@ def special(incoming):
         body = 'Thanks for using Harvard Now!\n'
         body += 'Text Music to view the Billboard Top 20 songs of the week\n'
     return body
+    
+def eval(cmd):
+    return cmd['label']+'\n'+machines_to_string(getMachines(cmd['roomid'],cmd['machinetype']))
