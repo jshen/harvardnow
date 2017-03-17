@@ -5,10 +5,6 @@ def eval(cmd, input=None):
     else:
         return "ERROR 42: service not recognized"
 
-## list of services that need the user's input to work, not a command
-def needsInput(cmd):
-    return cmd['service'] in ['W']
-
 def special(incoming):
     body = ''
     if incoming.upper() == "MUSIC" :
