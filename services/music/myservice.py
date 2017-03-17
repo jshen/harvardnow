@@ -11,8 +11,8 @@ def needsInput(cmd):
 
 def special(incoming):
     body = ''
-    if incoming.upper() == "Music" :
-        body = Music.special
+    if incoming.upper() == "MUSIC" :
+        body = music.special
     elif incoming.upper() == "DEMO":
       
         ## welcome/instructions
