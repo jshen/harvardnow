@@ -1,7 +1,7 @@
 def eval(cmd, input=None):
     s = ""
     if cmd['service'] == 'M': ## Music
-        return laundry.eval(cmd['args'])
+        return music.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
