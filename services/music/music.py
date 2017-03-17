@@ -53,6 +53,7 @@ def getSongs():
   artist_19 = artists[18].text.strip()
   artist_20 = artists[19].text.strip()
 
+def songList
   print "1. "+ song_1 + ": " + artist_1
   print "2. "+ song_2 + ": " + artist_2
   print "3. "+ song_3 + ": " + artist_3
@@ -75,16 +76,10 @@ def getSongs():
   print "20. "+ song_20 + ": " + artist_20
   
   
-def special(incoming):
-    body = ''
-    if incoming.upper() == "MUSIC" :
-        body = music.special
-    elif incoming.upper() == "DEMO":
-      
-        ## welcome/instructions
-        body = 'Thanks for using Harvard Now!\n'
-        body += 'Text Music to view the Billboard Top 20 songs of the week\n'
-    return body
+def special():
+  body = 'Thanks for using Harvard Now!\n'
+  body += 'Text Music to view the Billboard Top 20 songs of the week\n'
+  return body
     
 def eval(cmd):
-    return cmd['label']+'\n'+machines_to_string(getMachines(cmd['roomid'],cmd['machinetype']))
+    return songList
