@@ -77,8 +77,7 @@ def songList
   
   
 def special():
-  body = 'Thanks for using Harvard Now!\n'
-  body += 'Text Music to view the Billboard Top 20 songs of the week\n'
+  body = 'Text Music to view the Billboard Top 20 songs of the week\n'
   return body
     
 def eval(cmd):
