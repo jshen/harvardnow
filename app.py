@@ -1,7 +1,8 @@
-from flask import Flask, request, redirect
 import twilio.twiml
+from flask import Flask, request
 import data
 from services import *
+
 
 app = Flask(__name__)
 
@@ -18,6 +19,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'H': ## Food Trucks
+        return HUDS.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
@@ -33,6 +36,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "HUDS":
+        body = HUDS.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
