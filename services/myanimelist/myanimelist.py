@@ -110,8 +110,6 @@ def getMALData(input):
 
 	return body
 
-print(getMALData('-l kobayashi'))
-
 def makeSpecial():
 	s = 'To get information from MAL, start a command with myanimelist or mal\n'
 	s += 'To get the latest released anime, use the format \'number latest\'.'
