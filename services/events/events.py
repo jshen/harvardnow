@@ -11,7 +11,6 @@ def getEvents():
     events = []
     url = 'https://h.clubhub.live/'
 
-    print(url)
     website = urllib2.urlopen(urllib2.Request(
         url,
         headers={'User-Agent': 'Mozilla/5.0'}
