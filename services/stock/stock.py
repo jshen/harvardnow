@@ -3,10 +3,10 @@ import re
 from bs4 import BeautifulSoup
 
 #############################
-##    Weather Function     ##
+##    Stock Function     ##
 #############################
 
-def getWeatherData(input):
+def getStockData(input):
     url = 'https://finance.google.com/finance?q='
     url += input
     hdr = {'User-Agent': 'Chrome'}
@@ -21,18 +21,6 @@ def getWeatherData(input):
 
         return card
 
-        #label = card + '\n' if card.h3 is not None else ''
-
-        # overview = card.img.attrs['title'] + '\n' if card.img is not None and card.img.has_attr('title') else ''
-        # tempInFarenheit = 'Temp: ' + card.find_all(class_='wob_t')[0].text.encode('unicode-escape').replace(r'\xb0','') + '\n' if len(card.find_all(class_='wob_t')) > 0 else ''
-        # humidity = card.find_all(text=re.compile('Humidity'))[0] + '\n' if len(card.find_all(text=re.compile('Humidity'))) > 0 else ''
-        # wind = card.find_all(text=re.compile('Wind'))[0].parent.text if len(card.find_all(text=re.compile('Wind'))) > 0 else ''
-
-        # body = label
-        # body += overview
-        # body += tempInFarenheit
-        # body += humidity
-        # body += wind
      except Exception, e:
          print str(e)
          return "Could not find stock data. Are you sure you gave a proper stock symbol?"
@@ -51,4 +39,4 @@ def makeSpecial():
 special = makeSpecial()
 
 def eval(input):
-    return getWeatherData(input)
+    return getStockData(input)
