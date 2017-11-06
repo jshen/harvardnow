@@ -141,5 +141,10 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007272' , 'label': 'Barry\'s Corner Shuttle Route'}, 'tags':["BARRY'S",'BARRY', 'CORNER', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
-    {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'W', 'args':{}, 'tags':['WEATHER']},
+    {'service': 'M', 'args':{'dayofweek': 'Monday'}, 'tags':['MONDAY', 'OFFICE', 'HOURS', 'DAVID', 'MORIN']},
+    {'service': 'M', 'args':{'dayofweek': 'Tuesday'}, 'tags':['TUESDAY', 'OFFICE', 'HOURS', 'DAVID', 'MORIN']},
+    {'service': 'M', 'args':{'dayofweek': 'Wednesday'}, 'tags':['WEDNESDAY', 'OFFICE', 'HOURS', 'DAVID', 'MORIN']},
+    {'service': 'M', 'args':{'dayofweek': 'Thursday'}, 'tags':['THURSDAY', 'OFFICE', 'HOURS', 'DAVID', 'MORIN']},
+    {'service': 'M', 'args':{'dayofweek': 'Friday'}, 'tags':['FRIDAY', 'OFFICE', 'HOURS', 'DAVID', 'MORIN']}
 ]
