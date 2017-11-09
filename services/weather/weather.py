@@ -48,5 +48,3 @@ special = makeSpecial()
 
 def eval(input):
     return getWeatherData(input)
-
-eval('Boston')
