@@ -32,7 +32,6 @@ def getWeatherData(input):
     except Exception, e:
         print str(e)
         return "Could not find weather data. Are you sure you gave a proper city name?"
-
     return body
 
 ############################
