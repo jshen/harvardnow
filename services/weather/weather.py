@@ -32,7 +32,7 @@ def getWeatherData(input):
     except Exception, e:
         print str(e)
         return "Could not find weather data. Are you sure you gave a proper city name?"
-
+    print body
     return body
 
 ############################
@@ -48,3 +48,5 @@ special = makeSpecial()
 
 def eval(input):
     return getWeatherData(input)
+
+eval('Boston')
