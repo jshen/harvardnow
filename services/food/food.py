@@ -38,15 +38,10 @@ def getEntrees(url):
                 else:
                     indicator = False
     return menu
-
-def makeSpecial():
-    eval("")
     
 ############################
 ##       Top-Level        ##
 ############################
-
-special = makeSpecial()
 
 def eval(input):
     return parseInput(input)
