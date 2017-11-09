@@ -18,6 +18,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'F': ## Food
+        return food.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
@@ -33,6 +35,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "FOOD":
+        body = food.eval("")
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
