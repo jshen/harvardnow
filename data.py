@@ -142,4 +142,9 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'M', 'args':{'htype': 'GH'}, 'tags':['LAMONT', 'HOURS', 'GENERAL', 'HOURS']}
+    {'service': 'M', 'args':{'htype': 'MH'}, 'tags':['LAMONT', 'HOURS', 'MEDIA', 'HELP']}
+    {'service': 'M', 'args':{'htype': 'RH'}, 'tags':['LAMONT', 'HOURS', 'RESEARCH', 'HELP']}
+    {'service': 'M', 'args':{'htype': 'WPH'}, 'tags':['LAMONT', 'HOURS', 'WOODBERRY', 'POETRY', 'ROOM']}
+    {'service': 'M', 'args':{'htype': 'WPHS'}, 'tags':['LAMONT', 'HOURS', 'WOODBERRY', 'POETRY', 'ROOM', 'STAFF']}
 ]
