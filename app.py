@@ -18,12 +18,16 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'M': ## Menu
+        return menu.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
+    if cmd['service'] in ['W']:
+        return True
+    return cmd['service'] in ['M']
 
 def special(incoming):
     body = ''
