@@ -2,6 +2,8 @@ from flask import Flask, request, redirect
 import twilio.twiml
 import data
 from services import *
+import urllib2
+from bs4 import BeautifulSoup
 
 app = Flask(__name__)
 
@@ -18,6 +20,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'SP':
+        return sports.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
@@ -33,6 +37,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "UPCOMING SPORTS GAMES":
+        body = sports.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -81,6 +87,8 @@ def response():
 
     resp.message(body)
     return str(resp)
+
+
 
 if __name__ == "__main__":
     app.run(debug=True)

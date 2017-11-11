@@ -2,6 +2,7 @@
 ## a command is a dictionary containing a list of tags that uniquely identify it
 ## along with all the information needed to run the command
 box = [
+    {'service': 'SP', 'args':{}, 'tags': ['SPORTS', 'UPCOMING SPORTS', 'GAMES']},
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'washer', 'label': 'DUNSTER HOUSE K Washers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'WASHERS', 'WASHER']},
     {'service': 'L', 'args':{ 'roomid':'1362520', 'machinetype':'dryer', 'label': 'DUNSTER HOUSE K Dryers'}, 'tags': ['DUNSTER', 'HOUSE', 'K', 'LAUNDRY', 'DRYER', 'DRYERS']},
     {'service': 'L', 'args':{ 'roomid':'1362521', 'machinetype':'washer', 'label': 'DUNSTER HOUSE G Washers'}, 'tags': ['DUNSTER', 'HOUSE', 'G', 'LAUNDRY', 'WASHERS', 'WASHER']},
