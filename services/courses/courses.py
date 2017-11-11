@@ -1,53 +1,37 @@
-import urllib2, urllib
+import urllib2
 from bs4 import BeautifulSoup
-import data
 
 #############################
-##    Laundry Function     ##
+##    Course Function     ##
 #############################    
 
-def getMachines(roomid, machinetype):
-    machines = []
-    url = 'http://m.laundryview.com/submitFunctions.php?'
-    url += 'cell=null&lr=%s&monitor=true' % roomid
+def getCourseInfo(input):
+    url = 'https://courses.harvard.edu/search?'
+    url += 'sort=score%20desc%2Ccourse_title%20asc&start=0&rows=25'
+    url += '&q=%s' % input
     website = urllib2.urlopen(url)
     soup = BeautifulSoup(website.read(), 'html.parser')
-    washer_div = soup.find(id=machinetype)
-    machine = washer_div.next_sibling
-    if machinetype == 'washer':
-        while 'id' not in machine.attrs or machine['id'] != 'dryer':
-            machines.append({'lr': roomid,
-             'id': machine.a['id'],
-             'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-             'time': machine.a.p.text})
-            machine = machine.next_sibling
-    else:
-        while machine and machine.name == 'li':
-            machines.append({'lr': roomid,
-             'id': machine.a['id'],
-             'name': `(machine.a.text)`.split('\\xa0')[0][2:],
-             'time': machine.a.p.text})
-            machine = machine.next_sibling
-    return machines
 
-def machines_to_string(machines):
-    s = ''
-    for machine in machines:
-        s += machine['name'] + ': ' + machine['time'] + '\n'
-    return s
+    try:
+        instructors = soup.find(id='srl_instructor').text.encode('unicode-escape')
+        desc = soup.find(id='srl_description').text.encode('unicode-escape')
+        credits = soup.find_all('p')[2].text.encode('unicode-escape')
+        location = soup.find_all('p')[3].text.encode('unicode-escape')
 
-def room_names():
-    s = 'Here are the laundry rooms that we have data for: \n'
-    used = []
-    for room in data.rooms:
-        if data.rooms[room] not in used:
-            s += room + '\n'
-            used.append(data.rooms[room])
-    return s
+        body = 'Instructors: ' + instructors + '\n'
+        body += desc + '\n'
+        body += credits + '\n'
+        body += location + '\n'
+
+    except Exception, e:
+        print str(e)
+        return "Could not find course data. Are you sure you gave a proper course name?"
+
+    return body
+
 
 def makeSpecial():
-    s = "Laundry Rooms: \n"
-    s += '\n'.join([room for room in data.rooms])
+    s = 'To get the info for a particular course, use the format \'courses course\'.'
     return s
     
 ############################
@@ -57,5 +41,5 @@ def makeSpecial():
 ## return list of valid laundry rooms
 special = makeSpecial()
 
-def eval(cmd):
-    return cmd['label']+'\n'+machines_to_string(getMachines(cmd['roomid'],cmd['machinetype']))
+def eval(input):
+    return getCourseInfo(input)
