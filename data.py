@@ -141,5 +141,19 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007272' , 'label': 'Barry\'s Corner Shuttle Route'}, 'tags':["BARRY'S",'BARRY', 'CORNER', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007610' , 'label': 'Quad Stadium Express Shuttle Route'}, 'tags':['QUAD', 'STADIUM', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
-    {'service': 'W', 'args':{}, 'tags':['WEATHER']}
+    {'service': 'W', 'args':{}, 'tags':['WEATHER']},
+    {'service': 'B', 'args':{'busnumber': '71', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '71', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '72', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '73', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '73', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '74', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '74', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '77', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '77', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '78', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '78', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '86', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '96', 'direction: 0'}, 'tags': ['86', 'BUS', 'ROUTE']}
+    {'service': 'B', 'args':{'busnumber': '96', 'direction: 1'}, 'tags': ['86', 'BUS', 'ROUTE']}
 ]
