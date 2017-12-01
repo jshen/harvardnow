@@ -18,6 +18,8 @@ def eval(cmd, input=None):
         return shuttle.eval(cmd['args'])
     elif cmd['service'] == 'W': ## Weather
         return weather.eval(input)
+    elif cmd['service'] == 'C':
+        return chaucer.eval()
     else:
         return "ERROR 42: service not recognized"
 
@@ -45,6 +47,10 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
+
+
+    elif incoming.upper() == "CHAUCER":
+        body = chaucer.special
     return body
 
 ## main function
