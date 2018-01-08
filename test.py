@@ -1,7 +1,8 @@
-import run, LaundryScrape, shuttle
+# import run, LaundryScrape, shuttle
+from services import *
 
 f = open('output.txt', 'w')
-option = 4
+option = 2
 if (option == 1):
 
 	for room, roomid in LaundryScrape.rooms.iteritems():
