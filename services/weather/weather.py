@@ -11,10 +11,11 @@ def getWeatherData(input):
     url += '+'.join(input)
     hdr = {'User-Agent': 'Chrome'}
     req = urllib2.Request(url,headers=hdr)
-    website = urllib2.urlopen(req)
-    soup = BeautifulSoup(website.read(), 'html.parser')
 
     try:
+        website = urllib2.urlopen(req)
+        soup = BeautifulSoup(website.read(), 'html.parser')
+        
         card = soup.find(id='ires').find_all(class_='g')[0]
 
         label = card.h3.text + '\n' if card.h3 is not None else ''
