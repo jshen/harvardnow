@@ -52,7 +52,12 @@ def special(incoming):
 @app.route("/", methods=['GET', 'POST'])
 def response():
     resp = twilio.twiml.Response()
-    incoming = request.values.get('Body',None)
+    incoming = request.values.get('Body', None)
+
+    ## for testing purposes
+    if request.method == "GET":
+        incoming = request.args.get("phrase")
+
     if incoming is None: 
         resp = twilio.twiml.Response()
         resp.message(special("DEMO"))
@@ -86,6 +91,7 @@ def response():
 
     resp.message(body)
     return str(resp)
+
 
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
