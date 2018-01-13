@@ -21,6 +21,8 @@ def eval(cmd, input=None):
         return weather.eval(input)
     elif cmd['service'] == 'D': ## Word of the Day
         return wordOfTheDay.eval()
+    elif cmd['service'] == 'MBTA':
+        return MBTA.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
@@ -36,6 +38,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "MBTA":
+        body = MBTA.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
