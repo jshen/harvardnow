@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect
 import twilio.twiml
 import data
+from twilio.twiml.messaging_response import Message, MessagingResponse
 from services import *
 import os
 
@@ -57,7 +58,7 @@ def special(incoming):
 ## main function
 @app.route("/", methods=['GET', 'POST'])
 def response():
-    resp = twilio.twiml.Response()
+    resp = MessagingResponse()
     incoming = request.values.get('Body', None)
 
     ## for testing purposes
@@ -65,7 +66,7 @@ def response():
         incoming = request.args.get("phrase")
 
     if incoming is None: 
-        resp = twilio.twiml.Response()
+        resp = MessagingResponse()
         resp.message(special("DEMO"))
         return str(resp)
 
