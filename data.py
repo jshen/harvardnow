@@ -270,4 +270,5 @@ box = [
     {'service': 'MBTA', 'args': {'pg': ['orange/ONST', 'green/north']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'ORANGE', 'NORTH', 'STATION', 'GREEN']},
     {'service': 'MBTA', 'args': {'pg': ['blue/BGOV', 'green/gover']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'BLUE', 'GOVERNMENT', 'CENTER', 'GREEN']},
     {'service': 'MBTA', 'args': {'pg': ['orange/OHAY', 'green/haecl']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'ORANGE', 'HAYMARKET', 'GREEN']},
+    {'service': 'E', 'args':{}, 'tags': ['SQUARE','EVENTS','ACTIVITIES']},
 ]
