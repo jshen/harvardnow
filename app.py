@@ -23,6 +23,8 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'C': ## Crimson Headlines
+        return crimson_headlines.eval()
     else:
         return "ERROR 42: service not recognized"
 
@@ -38,6 +40,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "CRIMSON HEADLINES":
+        body = crimson_headlines.special
     elif incoming.upper() == "MBTA":
         body = MBTA.special
     elif incoming.upper() == "DEMO":
@@ -50,6 +54,7 @@ def special(incoming):
         body += 'e.g. Widener Gate; Quad Yard Express\n'
         body += 'For a list of all shuttle stops and routes send shuttle\n\n'
         body += 'Sending part of a name gives all information associated with that name.\n'
+        body += 'For a list of Crimson headlines and their respective links, send Crimson Headlines.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
     return body
@@ -64,7 +69,7 @@ def response():
     if request.method == "GET":
         incoming = request.args.get("phrase")
 
-    if incoming is None: 
+    if incoming is None:
         resp = twilio.twiml.Response()
         resp.message(special("DEMO"))
         return str(resp)
