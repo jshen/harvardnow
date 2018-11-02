@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 #############################
 
 def getElectionData(input):
-    url = 'http://www.google.com/search?q='
+    url = 'https://www.politico.com/election-results/2018/'
     url += '+'.join(input)
     hdr = {'User-Agent': 'Chrome'}
     req = urllib2.Request(url,headers=hdr)
@@ -41,7 +41,7 @@ def getElectionData(input):
 ############################
 
 def makeSpecial():
-    s = 'To get the weather for a particular city, use the format \'weather city\'.' # put 
+    s = 'To get the weather for a particular city, use the format \'weather city\'.' # put
     return s
 
 ## return proper format to use for getting weather
