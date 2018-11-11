@@ -105,3 +105,5 @@ def randomCapitalize(string):
             s += i
     return s
 
+
+print(eval(["mexico", "house", 2]))
