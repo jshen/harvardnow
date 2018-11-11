@@ -23,6 +23,8 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'E':
+        return elections.eval(input)    
     else:
         return "ERROR 42: service not recognized"
 
@@ -40,6 +42,8 @@ def special(incoming):
         body = weather.special
     elif incoming.upper() == "MBTA":
         body = MBTA.special
+    elif incoming.upper() == 'ELECTIONS':
+        body = elections.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -52,6 +56,7 @@ def special(incoming):
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
         body += 'route Quad Yard Express and sending Quincy laundry will give all the laundry rooms in Quincy.\n'
+        body += '2018 National Election results are available by sending the name of state, race, and district (if applicable).\n'
     return body
 
 ## main function
