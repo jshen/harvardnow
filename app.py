@@ -23,6 +23,8 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'H': ##Crimson headlines
+        return headlines.eval()
     else:
         return "ERROR 42: service not recognized"
 

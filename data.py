@@ -143,6 +143,7 @@ box = [
     {'service': 'S', 'args':{'endpoint': 'route', 'routeid': '4007650' , 'label': 'Allston Campus Express Shuttle Route'}, 'tags':['ALLSTON', 'CAMPUS', 'EXPRESS', 'SHUTTLE', 'ROUTE']},
     {'service': 'W', 'args':{}, 'tags':['WEATHER']},
     {'service': 'D', 'args':{}, 'tags':['WORDOFTHEDAY']},
+    {'service': 'H', 'args':{}, 'tags':['HEADLINES']},
     {'service': 'MBTA', 'args': {'pg': ['green/lake']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'GREEN', 'COLLEGE', 'BOSTON']},
     {'service': 'MBTA', 'args': {'pg': ['green/sougr']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'ST', 'STREET', 'SOUTH', 'GREEN']},
     {'service': 'MBTA', 'args': {'pg': ['green/chill']}, 'tags': ['MBTA', 'SUBWAY', 'T', 'SCHEDULE', 'LINE', 'HILL', 'AVE', 'GREEN', 'CHESTNUT']},
