@@ -99,7 +99,7 @@ def response():
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
     resp.message(body)
-    return str(body)
+    return str(resp)
 
 
 if __name__ == "__main__":
