@@ -23,6 +23,8 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'M': ## HKS Cafe Menu
+        return menu.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
@@ -40,6 +42,8 @@ def special(incoming):
         body = weather.special
     elif incoming.upper() == "MBTA":
         body = MBTA.special
+    elif incoming.upper() == "MENU":
+        body = menu.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -48,6 +52,8 @@ def special(incoming):
         body += 'For a list of all laundry rooms send laundry\n\n'
         body += 'To access shuttle information send the name of the stop or name of the route\n'
         body += 'e.g. Widener Gate; Quad Yard Express\n'
+        body += 'For the HKS Cafe Menu for today, send menu\n'
+        body += 'If you just want lunch or dinner at the cafe, send \'lunch\' or \'dinner\'\n\n'
         body += 'For a list of all shuttle stops and routes send shuttle\n\n'
         body += 'Sending part of a name gives all information associated with that name.\n'
         body += 'For example sending Quad will give information about the shuttle stop Quad and the shuttle'
