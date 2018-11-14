@@ -63,12 +63,11 @@ def special(incoming):
 def response():
     resp = twilio.twiml.Response()
     incoming = request.values.get('Body', None)
-
     ## for testing purposes
     if request.method == "GET":
         incoming = request.args.get("phrase")
-
-    if incoming is None: 
+    
+    if incoming is None:
         resp = twilio.twiml.Response()
         resp.message(special("DEMO"))
         return str(resp)
@@ -100,7 +99,7 @@ def response():
             body = "\n".join(['\n'+eval(cmd) for cmd in results])
 
     resp.message(body)
-    return str(resp)
+    return str(body)
 
 
 if __name__ == "__main__":
