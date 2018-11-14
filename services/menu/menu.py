@@ -43,6 +43,7 @@ def getMenuData(url, requested=None):
 	except:
 		return 'Could not obtain menu data!'
 
+
 def formatMenu(menu):
 	s = ''
 	for category in menu:
@@ -63,6 +64,7 @@ Other categories include: \'desserts\', \'from the grille\', and \'salad bar\'.'
 	return s
 
 special = makeSpecial()
+
 
 def eval(cmd):
 	# Get url corresponding to today's menu based on type
