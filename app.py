@@ -23,6 +23,8 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'H':
+        return headlines.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
@@ -40,6 +42,8 @@ def special(incoming):
         body = weather.special
     elif incoming.upper() == "MBTA":
         body = MBTA.special
+    elif incoming.upper() == 'HEADLINES':
+        body = headlines.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -64,7 +68,7 @@ def response():
     if request.method == "GET":
         incoming = request.args.get("phrase")
 
-    if incoming is None: 
+    if incoming is None:
         resp = twilio.twiml.Response()
         resp.message(special("DEMO"))
         return str(resp)
