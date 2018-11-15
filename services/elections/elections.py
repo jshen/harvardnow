@@ -1,3 +1,6 @@
+# 2018 election results service
+# Created by Andrea Zhang, Daniel Gottesman, and Jordan Barkin.
+
 import urllib2, urllib
 import re
 from random import randint
@@ -8,6 +11,7 @@ from bs4 import BeautifulSoup
 #########################################
 def getElectionData(state, race, district):
     state = state.lower()
+
     if not isState(state):
         return randomCapitalize(state + " is not a state.")
     
@@ -24,6 +28,7 @@ def getElectionData(state, race, district):
     try:
         section = soup.find("section", {"name" : race})
         results_table = section.find_all("td", {"class" : "candidate"})
+  
         for i in range(len(results_table)):
             results_table[i] = results_table[i].get_text()
             results_table[i] = results_table[i].strip()
@@ -37,8 +42,8 @@ def getElectionData(state, race, district):
         winner = results_table[0]
         losers = results_table[1:]
         loserstring = ", ".join(losers)
-        body = "Winner: " + winner + "\n" + "Loser(s): " + loserstring
         
+        body = "Winner: " + winner + "\n" + "Loser(s): " + loserstring
 
     except Exception, e:
         print str(e)
@@ -51,7 +56,7 @@ def getElectionData(state, race, district):
 ############################
 
 def makeSpecial():
-    s = 'This will get the word of the day.'
+    s = 'This will get election results for the 2018 midterms given a state and a race (governor, senate, or house + district).'
     return s
 
 ## return proper format
@@ -75,14 +80,12 @@ def eval(input):
     district = None
     
     if(length >= 1):
-        state = input[0]
+        state = input[0].lower()
     if(length >= 2):
-        race = input[1]  
+        race = input[1].lower()
     if(length >= 3):
-        district = str(input[2])   
+        district = str(input[2])  
         
-    print(state + ", " + race + ", " + str(district))
-    
     if not state:
         return "Please specify a state."
     
@@ -93,15 +96,17 @@ def eval(input):
     else:
         return "Please specify a race."
  
-        
-    
+   
 def randomCapitalize(string):
-    s = ""
-    for i in string:
-        num = randint(0,1)
-        if num == 1:
-            s += i.upper()
-        else:
-            s += i
-    return s
+    # s = ""
+    # for i in string:
+    #     num = randint(0,1)
+    #     if num == 1:
+    #         s += i.upper()
+    #     else:
+    #         s += i
+    # return s
+    return  "".join([i.upper() if randint(0,1)  else i.lower() for i in string])
 
+if __name__ == "__main__":
+    print(eval(["florida", "governor"]))
