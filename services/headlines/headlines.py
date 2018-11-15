@@ -5,20 +5,14 @@ def headlines(url_string):
     # String containing all headlines from main page
     headlines = ''
 
-    # Set up headline parser
+    # Parse all headlines
     website = urllib2.urlopen(url_string)
     soup = BeautifulSoup(website.read(), 'html.parser')
-    headline_tag = soup.find('a', href=True)
+    headline_tags = soup.find_all('a', href=True)
 
-    # Add first headline
-    headline = headline_tag.get_text()
-    headlines += headline + '\n'
-
-    # Iterate through all headlines
-    next_h = headline.next_sibling
-    while next_h != None:
-        headlines += next_h + '\n'
-        nexth = headline.next_sibling
+    # Add all headlines
+    for tag in headline_tags:
+        headlines += tag.get_text() + '\n'
 
     return headlines
 
