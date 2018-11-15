@@ -7,23 +7,23 @@ from bs4 import BeautifulSoup
 #####################################
 
 def getWordData():
-    url = 'http://www.merriam-webster.com/word-of-the-day'
+    url = '2700chess.com'
     hdr = {'User-Agent': 'Chrome'}
     req = urllib2.Request(url,headers=hdr)
     website = urllib2.urlopen(req)
     soup = BeautifulSoup(website.read(), 'html.parser')
 
     try:
-        wordHTML = soup.find_all("div", {"class" : "word-and-pronunciation"})[0].h1
-        word = wordHTML.get_text()
-        defHTML = soup.find_all("div", {"class" : "wod-definition-container"})[0].p
-        definition = list(defHTML.children)[1].strip()
+        playerHTML = soup.find_all("span", {"class" : "hidden searched"})[0]
+        player = playerHTML.get_text()
+        ratingHTML = soup.find_all("td", {"class" : "live_standard_rating"})[0].strong
+        rating = ratingHTML.get_text()
 
-        body = word + ": " + definition
+        body = player + ": " + rating
         
     except Exception, e:
         print str(e)
-        return "Could not find word of the day data."
+        return "Could not find top chess player info."
 
     return body
 
@@ -32,7 +32,7 @@ def getWordData():
 ############################
 
 def makeSpecial():
-    s = 'This will get the word of the day.'
+    s = 'This will get the current highest rated chess player.'
     return s
 
 ## return proper format
