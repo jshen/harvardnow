@@ -4,3 +4,5 @@
 
 Election results are requested with the following syntax: “Elections [STATE] [RACE] [DISTRICT (optional)]" 
 where race is “House”, ”Senate”, or “Governor.” DISTRICT is only required for house.
+
+Created by Andrea Zhang, Daniel Gottesman, and Jordan Barkin.

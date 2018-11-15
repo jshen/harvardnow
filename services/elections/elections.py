@@ -1,3 +1,6 @@
+# 2018 election results service
+# Created by Andrea Zhang, Daniel Gottesman, and Jordan Barkin.
+
 import urllib2, urllib
 import re
 from random import randint
