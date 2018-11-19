@@ -23,13 +23,17 @@ def eval(cmd, input=None):
         return wordOfTheDay.eval()
     elif cmd['service'] == 'MBTA':
         return MBTA.eval(cmd['args'])
+    elif cmd['service'] == 'NEWS':
+        return news.eval(input)
     else:
         return "ERROR 42: service not recognized"
 
 ## list of services that need the user's input to work, not a command
 def needsInput(cmd):
-    return cmd['service'] in ['W']
-
+    if cmd['service'] == 'W' or cmd['service'] == 'N':
+        return True
+    else:
+        return False
 def special(incoming):
     body = ''
     if incoming.upper() == "SHUTTLE" :
@@ -38,6 +42,8 @@ def special(incoming):
         body = laundry.special
     elif incoming.upper() == "WEATHER":
         body = weather.special
+    elif incoming.upper() == "NEWS":
+        body = news.special
     elif incoming.upper() == "MBTA":
         body = MBTA.special
     elif incoming.upper() == "DEMO":
@@ -64,7 +70,7 @@ def response():
     if request.method == "GET":
         incoming = request.args.get("phrase")
 
-    if incoming is None: 
+    if incoming is None:
         resp = twilio.twiml.Response()
         resp.message(special("DEMO"))
         return str(resp)
