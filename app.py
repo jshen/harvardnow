@@ -2,6 +2,7 @@ from flask import Flask, request, redirect
 import twilio.twiml
 import data
 from services import *
+import os
 
 app = Flask(__name__)
 
@@ -20,6 +21,10 @@ def eval(cmd, input=None):
         return weather.eval(input)
     elif cmd['service'] == 'B':
     	return basketball.eval(cmd['args'])
+    elif cmd['service'] == 'D': ## Word of the Day
+        return wordOfTheDay.eval()
+    elif cmd['service'] == 'MBTA':
+        return MBTA.eval(cmd['args'])
     else:
         return "ERROR 42: service not recognized"
 
@@ -37,6 +42,8 @@ def special(incoming):
         body = weather.special
     elif incoming.upper() == "BASKETBALL":
     	body = basketball.special
+    elif incoming.upper() == "MBTA":
+        body = MBTA.special
     elif incoming.upper() == "DEMO":
         ## welcome/instructions
         body = 'Thanks for using Harvard Now!\n'
@@ -55,7 +62,16 @@ def special(incoming):
 @app.route("/", methods=['GET', 'POST'])
 def response():
     resp = twilio.twiml.Response()
-    incoming = request.values.get('Body',None)
+    incoming = request.values.get('Body', None)
+
+    ## for testing purposes
+    if request.method == "GET":
+        incoming = request.args.get("phrase")
+
+    if incoming is None: 
+        resp = twilio.twiml.Response()
+        resp.message(special("DEMO"))
+        return str(resp)
 
     ## first check if the query is a special case
     body = special(incoming.replace(' ',''))
@@ -86,5 +102,7 @@ def response():
     resp.message(body)
     return str(resp)
 
+
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0',debug=True, port=port)
